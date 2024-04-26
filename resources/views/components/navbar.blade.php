@@ -1,72 +1,135 @@
-<nav class="border-gray-200 bg-primary-500 border shadow-lg">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <h1>
+
+
+<div class="container-xxl bg-white p-0">
+
+<div class="container-fluid nav-bar bg-transparent">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
+        <a href="index.html" class="navbar-brand d-flex align-items-center text-center">
+            <div class="icon p-2 me-2">
+                <img class="img-fluid" src="img/icon-deal.png" alt="Icon" style="width: 30px; height: 30px;">
+            </div>
             <a href="{{ route('home') }}"
                 class="font-bold text-xl text-gray-50 focus:outline focus:outline-2 focus:rounded-sm focus:outline-white">
                 {{ config('app.name') }}
             </a>
-        </h1>
-        <button data-collapse-toggle="navbar-hamburger" type="button"
-            class="inline-flex items-center p-2 ml-3 text-sm text-gray-50 rounded-lg hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-gray-200"
-            aria-controls="navbar-hamburger" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd"
-                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                    clip-rule="evenodd"></path>
-            </svg>
-        </button>
-        <div class="hidden w-full" id="navbar-hamburger">
-            @if (Route::has('login'))
-                <ul
-                    class="flex flex-col font-medium mt-4 rounded-lg bg-primary-500 dark:bg-gray-800 dark:border-gray-700">
-                    @auth
-                        <li>
-                            <a href="{{ route('profile') }}"
-                                class="font-bold text-lg text-gray-50 hover:text-gray-200 focus:outline focus:outline-2 focus:rounded-sm focus:outline-white flex items-center">
-                                <span class="mr-2">
-                                    {{ auth()->user()->username }}
-                                </span>
-                                <span
-                                    class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-                                    Balance: Rp {{ number_format(auth()->user()->balance) }}
-                                </span>
-                            </a>
-                        </li>
-                        <hr class="my-2 border-gray-200">
-                        <li>
-                            <a href="{{ route('bookings.index') }}"
-                                class="font-semibold text-gray-50 hover:text-gray-200 focus:outline focus:outline-2 focus:rounded-sm focus:outline-white">
-                                Bookings
-                            </a>
-                        </li>
-                        <li>
-                            <form method="POST" action="{{ route('logout') }}" class="inline">
-                                @csrf
-                                <button type="submit"
-                                    class="font-semibold text-gray-50 hover:text-gray-200 focus:outline focus:outline-2 focus:rounded-sm focus:outline-rose-500">
-                                    Log out
-                                </button>
-                            </form>
-                        </li>
-                    @else
-                        <li>
-                            <a href="{{ route('login') }}"
-                                class="font-semibold text-gray-50 hover:text-gray-200 focus:outline focus:outline-2 focus:rounded-sm focus:outline-rose-500">
-                                Log in
-                            </a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li>
-                                <a href="{{ route('register') }}"
-                                    class="font-semibold text-gray-50 hover:text-gray-200 focus:outline focus:outline-2 focus:rounded-sm focus:outline-rose-500">
-                                    Register
-                                </a>
-                            </li>
-                        @endif
-                    @endauth
-                </ul>
-            @endif
+        </a>
 
+        <!-- Toggle button for small screens -->
+        <button id="navToggle" class="navbar-toggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu items -->
+        <div class="navbar-nav ms-auto" id="navbarNav">
+            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a href="about.html" class="nav-item nav-link">About</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Let's Talk About Movies</a>
+                <div class="dropdown-menu rounded-0 m-0">
+                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                    <a href="404.html" class="dropdown-item">404 Error</a>
+                </div>
+
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Login/reg</a>
+                <div class="dropdown-menu rounded-0 m-0">
+                       @if (Route::has('login'))
+                               @auth
+                                        <a href="{{ route('profile') }}" class="dropdown-item">
+                                              <span class="mr-2">
+                                          {{ auth()->user()->username }}
+                                                  </span>
+                 </a>
+                                <a href="{{ route('bookings.index') }}" class="dropdown-item">Bookings</a>
+                                  <a class="dropdown-item">
+                                   <form method="POST" action="{{ route('logout') }}">
+                                     @csrf
+                                    <button type="submit"
+                            class="font-semibold text-gray-50 hover:text-gray-200 focus:outline focus:outline-2 focus:rounded-sm focus:outline-rose-500">
+                        Log out
+                    </button>
+                </form>
+            </a>
+        @else
+            <a href="{{ route('login') }}" class="dropdown-item">Login</a>
+            <a href="{{ route('register') }}" class="dropdown-item">Register</a>
+        @endauth
+    @endif
+    </div>
+            </div>
+            <a href="contact.html" class="nav-item nav-link">Contact</a>
+            <!-- <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a> -->
         </div>
-</nav>
+    </nav>
+</div>
+
+
+<!-- Navbar End -->
+
+
+<style>
+@media (max-width: 992px) {
+    #navbarNav {
+        display: none;
+    }
+}
+
+/* Add a 3D effect on hover with shiny effect */
+.navbar-nav .nav-link {
+  transition: transform 0.3s, box-shadow 0.3s;
+  transform: perspective(200px) translateZ(0);
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-nav .nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  inset: 0 0 0 0;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+.navbar-nav .nav-link:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  transform: perspective(200px) translateZ(20px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Smooth transition for all links */
+.navbar-nav .nav-link {
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #0056b3; /* Change to the color you want on hover */
+}
+
+
+</style>
+
+
+
+<script>
+document.getElementById('navToggle').addEventListener('click', function() {
+    var nav = document.getElementById('navbarNav');
+    if (nav.style.display === 'block') {
+        nav.style.display = 'none';
+    } else {
+        nav.style.display = 'block';
+    }
+});
+</script>
