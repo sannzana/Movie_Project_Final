@@ -31,10 +31,19 @@ class UserController extends Controller
             'username' => ['required', 'min:5', 'max:20'],
             'password' => ['required', 'confirmed', 'min:8', 'max:255'],
             'name' => ['required', 'min:5', 'max:50'],
-            'age' => ['required', 'integer']
+            'age' => ['required', 'integer'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048']
         ]);
 
         $formFields['password'] = bcrypt($formFields['password']);
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $formFields['image'] = $imagePath;
+        } else {
+            $formFields['image'] = null; // Explicitly set image to null if no image is uploaded
+        }
+
+        $formFields['role'] = 'user'; 
 
         User::create($formFields);
 

@@ -49,13 +49,13 @@
 
                     {{-- image upload --}}
                     <div>
-    <label for="user_image" class="label">Profile Image (Optional)</label>
-    <div class="file-input">
-        <input type="text" id="file-name" class="file-display" placeholder="No file chosen" readonly>
-        <input type="file" id="user_image" name="user_image" style="display: none;" onchange="document.getElementById('file-name').value = this.files[0].name">
-        <button type="button" class="file-button" onclick="document.getElementById('user_image').click();">Insert Image</button>
-    </div>
+                    <label for="user_image" class="label">Profile Image (Optional)</label>
+<div class="file-input">
+    <input type="text" id="file-name" class="file-display" placeholder="No file chosen" readonly>
+    <input type="file" id="user_image" name="image" style="display: none;" onchange="document.getElementById('file-name').value = this.files[0].name">
+    <button type="button" class="file-button" onclick="document.getElementById('user_image').click();">Choose Image</button>
 </div>
+
 
                     {{-- password --}}
                     <div>
