@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-  
+    Route::get('/movies', [AdminController::class, 'movieInfo'])->name('admin.iinfo'); // Add this line
 });
 
 
