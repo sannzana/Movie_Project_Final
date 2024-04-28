@@ -8,15 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+
+
 class Movie extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'title',
         'genre',
@@ -32,14 +29,6 @@ class Movie extends Model
         'ticket_price',
     ];
 
-
-
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'age_rating' => 'integer',
         'ticket_price' => 'integer',
@@ -47,64 +36,50 @@ class Movie extends Model
     ];
 
     /**
-     * Many to many relation to Showtime model.
-     *
-     * @return BelongsToMany
+     * One to many relation to Date model.
      */
-    public function dates(): BelongsToMany
-    {
-        return $this->belongsToMany(Date::class, 'date_movie');
-    }
+    // public function dates() {
+    //     return $this->hasMany(Date::class);
+    // }
 
     /**
      * One to many relation to Booking model.
-     *
-     * @return HasMany
      */
-    public function bookings(): HasMany
-    {
+    public function bookings() {
         return $this->hasMany(Booking::class);
     }
+    
 
     /**
-     * scopeFilter defines filter that used in query.
-     *
-     * @param Builder $query
-     * @param string|null $title
-     * @param string|null $sort
-     *
-     * @return void
+     * Scope a query to only include movies that match a certain title.
      */
-    public function scopeFilter(Builder $query, ?string $title, ?string $sort): void
-    {
-        if ($title ?? false) {
+    public function scopeFilter($query, ?string $title, ?string $sort) {
+        if ($title) {
             $query->where('title', 'like', '%' . $title . '%');
         }
 
-        if ($sort ?? false) {
+        if ($sort) {
             $sort = str_replace(' ', '_', $sort);
-
-            if ($sort === 'release_date' || $sort === 'age_rating' || $sort === 'ticket_price') {
-                $query->orderBy($sort);
-            }
+            $query->orderBy($sort);
         }
     }
 
     /**
-     * loadDatesForCurrentWeek loads dates for today until a week later.
-     *
-     * @return Movie
+     * Loads dates for the current week.
      */
-    public function loadDatesForCurrentWeek(): Movie
-    {
-        $currentDate = today('Asia/Jakarta');
-        $nextWeek = $currentDate->copy()->addWeek();
-
+    public function loadDatesForCurrentWeek() {
+        $currentDate = now(); // Get the current date and time
+        $twoWeeksLater = $currentDate->copy()->addWeeks(2); // Move two weeks ahead
+    
         return $this->load([
-            'dates' => function ($query) use ($currentDate, $nextWeek) {
-                $query->whereBetween('date', [$currentDate, $nextWeek])
-                    ->with('showtimes');
+            'dates' => function ($query) use ($currentDate, $twoWeeksLater) {
+                $query->whereBetween('date', [$currentDate, $twoWeeksLater]);
             },
         ]);
+    }
+
+    public function dates(): BelongsToMany
+    {
+        return $this->belongsToMany(Date::class, 'date_movie', 'movie_id', 'date_id');
     }
 }

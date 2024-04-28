@@ -40,12 +40,26 @@ class Date extends Model
     }
 
     /**
-     * Many to many relation to Movie model.
+     * One to many inverse relation to Movie model.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function movie(): BelongsTo
+    {
+        return $this->belongsTo(Movie::class);
+    }
+
+
+    public function dates(): BelongsToMany
+    {
+        return $this->belongsToMany(Date::class, 'date_movie');
+    }
+
     public function movies(): BelongsToMany
     {
         return $this->belongsToMany(Movie::class, 'date_movie');
     }
+
+   
 }
+

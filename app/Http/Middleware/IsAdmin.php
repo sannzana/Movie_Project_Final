@@ -37,13 +37,12 @@ class IsAdmin
 
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->role !== 'ADMIN') {
-            // If the user is not an admin, redirect to home page or where appropriate
+        // Check if user is logged in and has the 'ADMIN' role
+        if (auth()->check() && auth()->user()->role === 'ADMIN') {
+            return $next($request);
+        } else {
+            // If not admin, redirect to the home page with an error message
             return redirect()->route('home')->with('error', 'You do not have access to this page.');
         }
-
-        
-
-        return $next($request);
     }
 }

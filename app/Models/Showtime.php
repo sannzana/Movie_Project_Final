@@ -40,4 +40,9 @@ class Showtime extends Model
     {
         return $this->belongsToMany(Date::class)->using(DateShowtime::class);
     }
+
+    public function dates(): BelongsToMany
+    {
+        return $this->belongsToMany(Date::class)->using(DateShowtime::class);
+    }
 }

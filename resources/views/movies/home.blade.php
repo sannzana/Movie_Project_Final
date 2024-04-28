@@ -98,40 +98,14 @@
     </div> 
 
 
-    <section class="movie-section">
-@foreach ($movies as $movie)
-    <div class="movie-card {{ $index % 2 == 0 ? 'text-left' : 'text-right' }}">
-        <div class="movie-content">
-            <h3 class="movie-title">{{ $movie->title }}</h3>
-            <!-- New content -->
-            <p class="movie-description">{{ $movie->description }}</p>
-            <p class="movie-duration">{{ $movie->duration }}</p>
-            <p class="movie-genre">{{ $movie->genre }}</p>
-            <!-- Existing buttons -->
-            <div class="btn-container">
-            <a href="{{ route('movies.show', $movie->id) }}" class="btn">Learn more</a>
-            <a href="{{ route('movies.show', $movie->id) }}" class="btn">Book Your Seat</a>
-            </div>
+ 
 
-        </div>
-        <div class="movie-image">
-            <img src="{{ $movie->poster_url }}" alt="{{ $movie->title }}" class="movie-img">
-        </div>
-    </div>
-    @endforeach
-
-    </section>
 
 </section>
 
 
 
-
-
-
-
-
-    <
+    
 
         <!-- Topbar Start -->
         <!-- <div class="container-fluid topbar d-none d-xl-block w-100">
@@ -313,124 +287,32 @@
 <!-- ongoing movies -->
 
 
-        <div class="container-fluid service bg-light pb-5">
+        <!-- <div class="container-fluid service bg-light pb-5">
             <div class="container pb-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
                     <p class="text-uppercase text-secondary fs-5 mb-0">On Going Movies</p>
                     <h2 class="display-4 text-capitalize mb-3">Welcome To The World Of Movies!!!</h2>
                 </div>
-                 <div class="row g-4">
+               
+                <div class="row g-4"> 
                 @foreach ($movies as $movie)
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <img src="{{ $movie->poster_url }}" class="img-fluid w-100" alt="Image">
-                            </div>
-                            <div class="service-content text-center p-4">
-                                <div class="bg-secondary btn-xl-square mx-auto" style="width: 120px; height: 120px;">
-                                    <i class="fas fa-home text-primary fa-4x"></i>
-                                </div>
-                                <a href="#" class="d-block fs-4 my-4">{{ $movie->title }}</a>
-                                <p class="text-white mb-4">{{ $movie->description }}</p>
-                                <a class="btn btn-secondary py-2 px-4" href="{{ route('movies.show', $movie->id) }}">Book Now</a>
-                            </div>
-                            <div class="service-tytle">
-                                <div class="d-flex align-items-center ps-4 w-100">
-                                    <h4>{{ $movie->title }}</h4>
-                                </div>
-                                <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                                    <i class="fas fa-home text-primary fa-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-
-                     @endforeach
+                    
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
                         <div class="service-item">
-                            <div class="service-img">
-                                <img src="img3/service-2.jpg" class="img-fluid w-100" alt="Image">
-                            </div>
-                            <div class="service-content text-center p-4">
-                                <div class="bg-secondary btn-xl-square mx-auto" style="width: 120px; height: 120px;">
-                                    <i class="fas fa-users-cog text-primary fa-4x"></i>
-                                </div>
-                                <a href="#" class="d-block fs-4 my-4">Property Maintenance</a>
-                                <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, minima!</p>
-                                <a class="btn btn-secondary py-2 px-4" href="#">Read More</a>
-                            </div>
-                            <div class="service-tytle">
-                                <div class="d-flex align-items-center justify-content-start ps-4 w-100">
-                                    <h4>Property Maintenance</h4>
-                                </div>
-                                <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                                    <i class="fas fa-users-cog text-primary fa-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <img src="img3/service-3.jpg" class="img-fluid w-100" alt="Image">
-                            </div>
-                            <div class="service-content text-center p-4">
-                                <div class="bg-secondary btn-xl-square mx-auto" style="width: 120px; height: 120px;">
-                                    <i class="fas fa-hospital-user text-primary fa-4x"></i>
-                                </div>
-                                <a href="#" class="d-block fs-4 my-4">Project managment</a>
-                                <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, minima!</p>
-                                <a class="btn btn-secondary py-2 px-4" href="#">Read More</a>
-                            </div>
-                            <div class="service-tytle">
-                                <div class="d-flex align-items-center justify-content-start ps-4 w-100">
-                                    <h4>Project managment</h4>
-                                </div>
-                                <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                                    <i class="fas fa-hospital-user text-primary fa-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <img src="img3/service-4.jpg" class="img-fluid w-100" alt="Image">
-                            </div>
-                            <div class="service-content text-center p-4">
-                                <div class="bg-secondary btn-xl-square mx-auto" style="width: 100px; height: 100px;">
-                                    <i class="fas fa-file-invoice-dollar text-primary fa-4x"></i>
-                                </div>
-                                <a href="#" class="d-block fs-4 my-4">Virtual Design & Build</a>
-                                <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, minima!</p>
-                                <a class="btn btn-secondary py-2 px-4" href="#">Read More</a>
-                            </div>
-                            <div class="service-tytle">
-                                <div class="d-flex align-items-center justify-content-start ps-4 w-100">
-                                    <h4>Virtual Design & Build</h4>
-                                </div>
-                                <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                                    <i class="fas fa-file-invoice-dollar text-primary fa-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <img src="img3/service-5.jpg" class="img-fluid w-100" alt="Image">
+                            <div class="service-img custom-poster">
+                            <img src="{{ Storage::url($movie->poster_url) }}"   class="img-fluid w-100" alt="Image">
                             </div>
                             <div class="service-content text-center p-4">
                                 <div class="bg-secondary btn-xl-square mx-auto" style="width: 100px; height: 100px;">
                                     <i class="fas fa-cogs text-primary fa-4x"></i>
                                 </div>
-                                <a href="#" class="d-block fs-4 my-4">Preconstruction</a>
+                                <a href="#" class="d-block fs-4 my-4">{{ $movie->title }}</a>
                                 <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, minima!</p>
                                 <a class="btn btn-secondary py-2 px-4" href="#">Read More</a>
                             </div>
                             <div class="service-tytle">
                                 <div class="d-flex align-items-center justify-content-start ps-4 w-100">
-                                    <h4>Preconstruction</h4>
+                                    <h4>{{ $movie->title }}</h4>
                                 </div>
                                 <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
                                     <i class="fas fa-cogs text-primary fa-2x"></i>
@@ -438,39 +320,71 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <img src="img3/service-6.jpg" class="img-fluid w-100" alt="Image">
-                            </div>
-                            <div class="service-content text-center p-4">
-                                <div class="bg-secondary btn-xl-square mx-auto" style="width: 100px; height: 100px;">
-                                    <i class="fas fa-sitemap text-primary fa-4x"></i>
-                                </div>
-                                <a href="#" class="d-block fs-4 my-4">Design Build</a>
-                                <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, minima!</p>
-                                <a class="btn btn-secondary py-2 px-4" href="#">Read More</a>
-                            </div>
-                            <div class="service-tytle">
-                                <div class="d-flex align-items-center justify-content-start ps-4 w-100">
-                                    <h4>Design Build</h4>
-                                </div>
-                                <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                                    <i class="fas fa-sitemap text-primary fa-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                        <a class="btn btn-secondary py-3 px-5 mt-4" href="#">More Services</a>
-                    </div>
-
-               
+               @endforeach
                 </div>
             </div>
+        </div> -->
+
+
+        <div class="container-fluid service bg-light pb-5">
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <p class="text-uppercase text-secondary fs-5 mb-0">On Going Movies</p>
+            <h2 class="display-4 text-capitalize mb-3">Welcome To The World Of Movies!!!</h2>
         </div>
+        
+        <div class="row g-4"> 
+        @foreach ($movies as $movie)
+            
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                <div class="service-item" style="height: 450px;"> <!-- Adjusted height -->
+                    <div class="service-img custom-poster">
+                        <img src="{{ Storage::url($movie->poster_url) }}" class="" alt="Image" 
+                        style="width: 100%; 
+   height: 450px;"> <!-- Uniform image size -->
+                    </div>
+                    <div class="service-content text-center p-4">
+                        <div class="bg-secondary btn-xl-square mx-auto" style="width: 100px; height: 100px;">
+                            <i class="fas fa-cogs text-primary fa-4x"></i>
+                        </div>
+                        <a href="#" class="d-block fs-4 my-4">{{ $movie->title }}</a>
+                        <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, minima!</p>
+                        <a class="btn btn-secondary py-2 px-4" href="#">Learn More</a>
+                        <br> <br>
+                        <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-secondary py-2 px-4">Book Now</a>
+                    </div>
+                    <div class="service-tytle">
+                        <div class="d-flex align-items-center justify-content-start ps-4 w-100">
+                            <h4>{{ $movie->title }}</h4>
+                        </div>
+                        <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
+                            <i class="fas fa-cogs text-primary fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+        </div>
+    </div>
+</div>
 
 
+<style>
+
+/* .service-item {
+    transition: height 0.3s ease-in-out;
+} */
+
+
+.service-img img {
+    width: 100%; /* Make image full width of the container */
+    height: 100%; /* Make image full height of the container */
+    object-fit: cover; /* This will make sure the image fits within the container */
+}
+
+
+
+</style>
 
 
 
