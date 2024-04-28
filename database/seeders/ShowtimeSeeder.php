@@ -16,9 +16,9 @@ class ShowtimeSeeder extends Seeder
     {
         // showtime schedule
         $schedule = [
-            ['start' => '10:00 am', 'end' => '1:00 pm'],
-            ['start' => '2:30 pm', 'end' => '5:30 pm'],
-            ['start' => '7:00 pm', 'end' => '10:00pm'],
+            ['start' => '10:00', 'end' => '1:00'],
+            ['start' => '2:30', 'end' => '5:30'],
+            ['start' => '7:00', 'end' => '10:00'],
 
         ];
 

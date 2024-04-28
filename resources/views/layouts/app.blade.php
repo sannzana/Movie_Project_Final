@@ -35,7 +35,7 @@
                 </div>
 
             </div>
-            <div class="nav-item dropdown">
+            <!-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Login/reg</a>
                 <div class="dropdown-menu rounded-0 m-0">
                        @if (Route::has('login'))
@@ -54,19 +54,85 @@
                         Log out
                     </button>
                 </form>
-            </a>
-        @else
-            <a href="{{ route('login') }}" class="dropdown-item">Login</a>
-            <a href="{{ route('register') }}" class="dropdown-item">Register</a>
-        @endauth
-    @endif
-    </div>
+                </a>
+              @else
+                     <a href="{{ route('login') }}" class="dropdown-item">Login</a>
+                      <a href="{{ route('register') }}" class="dropdown-item">Register</a>
+              @endauth
+                @endif
+
+
+   
+ -->
+
+
+
+
+
+
+                <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Login/Reg</a>
+                <div class="dropdown-menu rounded-0 m-0">
+                    
+                @if (Route::has('login'))
+                               @auth
+                                        <a href="{{ route('profile') }}" class="dropdown-item">
+                                              <span class="mr-2">
+                                          {{ auth()->user()->username }}
+                                                  </span>
+                 </a>
+                                <a href="{{ route('bookings.index') }}" class="dropdown-item">Bookings</a>
+                                  <a class="dropdown-item">
+                                   <form method="POST" action="{{ route('logout') }}">
+                                     @csrf
+                                    <button type="submit"
+                            class="font-semibold text-gray-50 hover:text-gray-200 focus:outline focus:outline-2 focus:rounded-sm focus:outline-rose-500">
+                        Log out
+                    </button>
+                </form>
+                </a>
+              @else
+                     <a href="{{ route('login') }}" class="dropdown-item">Login</a>
+                      <a href="{{ route('register') }}" class="dropdown-item">Register</a>
+              @endauth
+                @endif
+
+
+                </div>
+
             </div>
-            <a href="contact.html" class="nav-item nav-link">Contact</a>
-            <!-- <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a> -->
-        </div>
+
+
+
+
+
+
+                    <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
+                    <!-- <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a> -->
+       
+
+                 
+
+    </div>
+    @auth
+                      @if (auth()->user()->role === 'ADMIN')
+                          <a href="{{ route('admin.dashboard') }}" class="nav-item nav-link active">Dashboard</a>
+                        @endif
+                   @endauth 
+                   
+                   <a href="contact.html" class="nav-item nav-link">Contact</a>
     </nav>
 </div>
+
+
+
+
+
+
+
+
+
+<!-- </div> -->
 
 
 <!-- Navbar End -->
