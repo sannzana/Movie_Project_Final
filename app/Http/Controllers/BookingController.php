@@ -83,12 +83,12 @@ class BookingController extends Controller
         $booking->status = BookingStatus::PAID;
 
         // check if the user has enough balance to book the tickets
-        if ($user->balance < $booking->total_price) {
-            return back()
-                ->with('error', 'You do not have enough balance to book these tickets!');
-        }
+        // if ($user->balance < $booking->total_price) {
+        //     return back()
+        //         ->with('error', 'You do not have enough balance to book these tickets!');
+        // }
 
-        $user->balance -= $booking->total_price;
+        // $user->balance -= $booking->total_price;
 
         $user->update();
         $booking->save();
