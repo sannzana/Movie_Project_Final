@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style22.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <title>Document</title>
 </head>
 <body>
@@ -95,26 +96,35 @@
 </div>
 
 
-   <h6 style="color: #fff;">Click To proceed</h6> 
-   {{-- Dates and showtimes list --}}
-   <section id="dates-showtimes" class="p-6 max-w-screen-lg mx-auto">
-       <div class="container mx-auto">
-           <h2 class="text-3xl font-bold mb-4 text-center">
-               Dates and Showtimes
-           </h2>
+   <section id="dates-showtimes" class="container">
+    <h2>Dates and Showtimes</h2>
+    <div class="grid">
+        @foreach ($movie->dates as $date)
+            <div class="date-card">
+                <h3>{{ $date->date->format('D, j M Y') }}</h3>
+                <ul>
+                    @foreach ($date->showtimes as $showtime)
+                        @php
+                            $formattedDate = $date->date->format('Y-m-d');
+                            $isToday = $formattedDate == $currentDate;
+                            $isPastDate = $formattedDate < $currentDate;
+                            $isPastShowtime = $showtime->start_time < $currentTime;
+                            $disabled = $isPastDate || ($isToday && $isPastShowtime);
+                        @endphp
+                        <li class="{{ $disabled ? 'disabled' : 'available' }}">
+                            <a href="{{ route('bookings.create', [$movie, $date, $showtime]) }}">
+                                <button type="button">
+                                    {{ $showtime->start_time }} - {{ $showtime->end_time }}
+                                </button>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endforeach
+    </div>
+</section>
 
-           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-               @foreach ($movie->dates as $date)
-                   <x-date-card :date="$date">
-                       @foreach ($date->showtimes as $showtime)
-                           <x-showtime-button :showtime="$showtime" :movie="$movie" :date="$date" :currentDate="$currentDate"
-                               :currentTime="$currentTime" />
-                       @endforeach
-                   </x-date-card>
-               @endforeach
-           </div>
-       </div>
-   </section>
 
 </div>
 
@@ -126,8 +136,6 @@
 <script src="app22.js"></script>
 
 
-</body>
-</html>
 
 
 
@@ -382,7 +390,7 @@ border:1px solid ;
 }
 .book .right .left_curd .crd::-webkit-scrollbar-thumb{
     height:3px;
-    background: rgbrgb(184, 184, 184, .5);
+    background: rgb(184, 184, 184, .5);
  }
  
  .book .right .left_curd .crd li{
@@ -522,87 +530,21 @@ border:1px solid ;
     left: 0;
 }
 
-.book .right .chair
-{
-    width:95%;
-    /* border:1px solid #fff; */
-    /* eita kata jabe, border */
-    margin:auto;
-   
-}
-
-.book .right .chair .row{
-    width:100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 15px;
-}
-.book .right .chair .row li{
-   position: relative;
-   width: 25px;
-   height: 15px;
-   background: rgb(184, 184, 184, .3);
-   list-style: none;
-   border-radius: 5px;
-   cursor: pointer;
-   transition: .3s linear;
-   font-size: 7px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   color: #fff;
-   font-weight: 600;
 
 
-}
 
-.book .right .chair .row li:before{
-   content: '';
-   position: absolute;
-   width: 100%;
-   height: 5px;
-   background: rgb(184, 184, 184, .1);
-   bottom: -8px;
-   border-radius: 10px;
 
- }
+
+
  
 
-.book .right .chair .row li:hover{
-   background: greenyellow; 
-   color:#000;
-}
 
-.book .right .chair .row li:nth-child(6){
-  margin-right: 30px;
- }
 
- .book .right .chair .row li:nth-last-child(6){
-    margin-left: 30px;
-   }
 
-   .book .right .chair .row span{
-color:#fff;
-    font-size:11px;
-    font-weight: 600;
-   }
 
  /* java class for colors   */
 
- .book .right .chair .booked
- {
-background: #fd6565 !important;
-
- }
-
-
- .book .right .chair .selected
- {
-background: greenyellow !important;
-color: #000 !important;
-
- } 
+ 
     
   
 .book .right .details
@@ -721,11 +663,418 @@ transition: .3s linear;
 
  
 
+/* General styles for the movie showtimes section */
+#dates-showtimes {
+    background-color: rgba(0, 0, 0, 0.2); /* Dark background for contrast, corrected rgba syntax */
+    color: #fff; /* White text color */
+    padding: 20px;
+    max-width: 100%; /* Ensures the container can fit within its parent */
+    margin: 0 auto;
+    border-radius: 20px; /* Adds rounded corners */
+    background: linear-gradient(180deg,transparent,#000);
+}
+
+
+#dates-showtimes h2 {
+    text-align: center; /* Center heading */
+    margin-bottom: 30px;
+    shadow: 0 2px 5px rgba(123,0,0,0.2); Subtle shadow
+}
+
+/* Style for individual date blocks */
+#dates-showtimes h3{
+    margin-top: 20px;
+    text-align: center; /* Center dates */
+}
+#dates-showtimes .date-block {
+    margin-bottom: 15px;
+    text-align: center; /* Center dates */
+}
+
+/* List styling for showtimes */
+#dates-showtimes ul {
+    list-style-type: none; /* No bullets */
+    padding: 0;
+    display: flex; /* Flexbox for equal spacing */
+    flex-wrap: wrap; /* Allow wrapping of items */
+    justify-content: space-around; /* Space around items */
+}
+
+#dates-showtimes li {
+    flex: 1 1 30%; /* Flex grow, shrink and basis */
+    margin: 15px; /* Margin around each time block */
+    height: 40px; /* Increased height */
+    display: flex;
+    align-items: center; /* Vertically center content inside the block */
+    justify-content: center; /* Horizontally center content */
+}
+
+/* Button styling for showtimes */
+#dates-showtimes button {
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions for hover effects */
+    border: none; /* No border */
+    outline: none; /* No outline */
+    padding: 10px 20px; /* Padding inside button */
+    width: 100%; /* Full width of its container */
+}
+
+/* Available showtime button styling */
+#dates-showtimes .available {
+    background-color: #444; /* Dark grey background */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow */
+}
+
+#dates-showtimes .available:hover {
+    transform: scale(1.05); /* Slightly larger on hover */
+    box-shadow: 0 4px 15px rgba(0,255,0,0.5); /* Neon green shadow on hover */
+}
+
+/* Disabled showtime button styling */
+#dates-showtimes .disabled {
+    background-color: red; /* Red background for disabled */
+    color: #fff; /* White text for contrast */
+    cursor: not-allowed; /* No pointer cursor */
+    opacity: 0.5; /* Half transparency */
+}
 
 
 
+/* 
+
+@media (max-width: 768px) {
+    .book {
+        flex-direction: column;
+        height: auto;
+    }
+    .book .left, .book .right {
+        width: 100%;
+        padding: 20px;
+    }
+    .book .right {
+        order: 2; 
+    }
+    .book .right:before, .book .right:after {
+        height: 150px; 
+    }
+    .book .right .head_time::before {
+        width: 100px; 
+    }
+    
+  
+    .book .right .details .details_chair li {
+        margin: 0 10px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    body {
+        display: block;
+    }
+    .book .left img {
+        height: 50%; 
+    }
+    .book .left .play {
+        left: 50%; 
+        transform: translateX(-50%); 
+    }
+
+
+
+
+
+    .book .right .details .details_chair li {
+        margin: 0 10px; 
+    }
+
+
+
+
+
+
+
+    .book .right:before, .book .right:after {
+        height: 100px; 
+    }
+    .book .right .head_time::before {
+        width: 80px; 
+    }
+   
+    .book .right .details .details_chair li {
+        margin: 0 5px; 
+    }
+    .book .right .details .details_chair li::before,
+    .book .right .details .details_chair li::after {
+        width: 15px;
+        height: 10px;
+    }
+}
+
+
+
+
+
+ */
+
+
+
+
+
+/* 
+
+
+
+@media (max-width: 768px) {
+    #dates-showtimes button {
+        padding: 10px 5px; 
+    }
+    #dates-showtimes ul {
+        flex-direction: column;
+    }
+    #dates-showtimes li {
+        flex: 1 1 100%; 
+    }
+}
+
+
+
+ */
+
+
+
+
+
+
+
+ 
+
+ @media only screen and (max-width: 1024px) {
+    /* Styles for medium devices like tablets in landscape orientation or small desktops */
+
+    .book {
+        display: flex;
+        flex-direction: row; /* side-by-side layout for .left and .right */
+        align-items: stretch; /* Align items in a line */
+        justify-content: space-between; /* Distributes space around items */
+    }
+
+    .book .left, .book .right {
+        width: 50%; /* Each division takes half the width */
+        padding: 20px; /* Add padding for separation */
+    }
+
+    .book .right .details {
+        margin-top: 0; /* Remove any top margin as side-by-side layout provides more space */
+    }
+
+    .book .right .book_tic {
+        right: 10%; /* Adjust the right margin for the button */
+        width: 60px;
+        height: 60px;
+        padding: 10px 11px;
+    }
+
+    #dates-showtimes h2 {
+        font-size: 22px; /* Larger font size suitable for larger screens */
+    }
+
+    #dates-showtimes button {
+        padding: 12px 24px;
+    }
+
+    .details {
+        display: flex; /* Keeps flex settings for center alignment */
+        justify-content: center; /* Centers children horizontally in the container */
+        align-items: center; /* Centers children vertically in the container */
+    }
+
+    .details .details_chair li {
+        font-size: 16px; /* Suitable font size for larger screens */
+        padding: 20px 10px; /* More generous padding */
+        margin: 0 15px; /* Adjust margins for better spacing */
+    }
+
+    .details .details_chair li::before,
+    .details .details_chair li::after {
+        width: 14px; /* Appropriate size for icons */
+        height: 14px;
+    }
+}
+ 
+
+@media only screen and (max-width: 820px) {
+    /* Styles for small tablets and large phones */
+
+    .book {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; /* Ensures child elements span the full width */
+    }
+
+    .book .left, .book .right {
+        width: 100%; /* Each division takes the full width */
+    }
+
+    .book .right .details {
+        margin-top: 20px;
+    }
+
+    .book .right .book_tic {
+        right: 10%; /* Slightly more margin than on the smallest screens */
+        width: 40px; /* Slightly larger button */
+        height: 40px; /* Slightly larger button */
+        padding: 8px 9.5px; /* Adjust padding */
+    }
+
+    #dates-showtimes h2 {
+        font-size: 20px; /* Slightly larger font size for readability */
+    }
+
+    #dates-showtimes button {
+        padding: 10px 24px; /* Larger padding inside button */
+    }
+
+    .details {
+        padding-left: 15px; /* Adjust padding for smaller screens */
+        display: flex; /* Establishes a flex container */
+        justify-content: center; /* Centers children horizontally in the container */
+        align-items: center; /* Centers children vertically in the container */
+    }
+
+    .details .details_chair li {
+        font-size: 16px; /* Slightly larger font size */
+        padding: 18px 10px; /* Adjust padding to make elements slightly larger */
+        margin: 0 15px; /* Adjust margin to avoid crowding */
+    }
+
+    .details .details_chair li::before,
+    .details .details_chair li::after {
+        width: 15px; /* Slightly larger icons */
+        height: 15px; /* Slightly larger icons */
+    }
+}
+
+
+/* Responsive CSS for smaller screens */
+
+@media only screen and (max-width: 768px) {
+    /* Styles for tablets and smaller desktops */
+
+    .book {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; /* Ensures child elements span the full width */
+    }
+
+    .book .left, .book .right {
+        width: 100%; /* Each division takes the full width */
+    }
+
+    .book .right .details {
+        margin-top: 20px;
+    }
+
+    .book .right .book_tic {
+        right: 10%; /* Slightly more space on the right compared to smaller devices */
+        width: 40px; /* Slightly larger button for better interaction */
+        height: 40px; /* Slightly larger button for better interaction */
+        padding: 10px 10px; /* Adjusted padding for better visibility */
+    }
+
+    #dates-showtimes h2 {
+        font-size: 20px; /* Larger font size for better readability on bigger screens */
+    }
+
+    #dates-showtimes button {
+        padding: 10px 20px; /* More padding for a better tactile response */
+    }
+
+    .details {
+        padding-left: 20px; /* More padding for alignment */
+        display: flex; /* Establishes a flex container */
+        justify-content: center; /* Centers children horizontally in the container */
+        align-items: center; /* Centers children vertically in the container */
+        /* Optional: Adjust height as necessary to fill container */
+    }
+
+    .details .details_chair li {
+        font-size: 16px; /* Increase font size for readability on larger screens */
+        padding: 20px 10px; /* More padding for larger elements */
+        margin: 0 20px; /* More space between items */
+    }
+
+    .details .details_chair li::before,
+    .details .details_chair li::after {
+        width: 15px; /* Larger icons for better visibility */
+        height: 15px; /* Larger icons for better visibility */
+    }
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 480px) {
+    /* Styles for mobile devices */
+
+    .book {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; /* Ensures child elements span the full width */
+    }
+
+    .book .left, .book .right {
+        width: 100%; /* Each division takes the full width */
+    }
+
+    .book .right .details {
+        margin-top: 20px;
+    }
+
+    .book .right .book_tic {
+        right: 5%; /* Adjust button placement if necessary */
+        width: 35px;
+        height: 35px;
+        padding: 7px 8.5px;
+    }
+
+    #dates-showtimes h2 {
+        font-size: 18px; /* Adjust heading size for readability */
+    }
+
+    #dates-showtimes button {
+        padding: 8px 16px;
+    }
+    .details {
+        padding-left: 10px; /* Adjust padding for smaller screens */
+        display: flex; /* Establishes a flex container */
+        justify-content: center; /* Centers children horizontally in the container */
+        align-items: center; /* Centers children vertically in the container */
+        /* Optional: Adjust height as necessary to fill container */
+    }
+
+    .details .details_chair li {
+        /* display:flex;  */
+        font-size: 14px; /* Reduce font size for smaller screens */
+        padding: 16px 2px; /* Adjust padding to make elements smaller */
+        margin: 0 10px;
+        /* align-items:center; */
+    }
+
+    .details .details_chair li::before,
+    .details .details_chair li::after {
+        width: 10px; /* Smaller icons */
+        height: 10px; /* Smaller icons */
+    }
+}
 
     
+
+
+
 
 
 </style>
