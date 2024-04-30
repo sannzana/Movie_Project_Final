@@ -10,6 +10,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 
+
+
+
+
+
 class Movie extends Model
 {
     use HasFactory;
@@ -80,6 +85,18 @@ class Movie extends Model
 
     public function dates(): BelongsToMany
     {
+     
         return $this->belongsToMany(Date::class, 'date_movie', 'movie_id', 'date_id');
     }
+
+
+
+
+    public function loadAllDates() {
+        return $this->load('dates'); // Simply load all dates related to the movie
+    }
+    
+
+
+
 }

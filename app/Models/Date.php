@@ -49,6 +49,10 @@ class Date extends Model
         return $this->belongsTo(Movie::class);
     }
 
+    public function datess() {
+        return $this->hasMany(Date::class);
+    }
+
 
     public function dates(): BelongsToMany
     {

@@ -2,7 +2,6 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,16 +113,19 @@
         <div class="row">
             <span>J</span>
             @foreach ($chunkedSeats as $seat)
-                <li class="seat">
-                    <label for="seat{{ $seat->id }}">
-                        <input type="checkbox" name="seats[]" id="seat{{ $seat->id }}"
-                               value="{{ $seat->id }}" class="seat-checkbox"  class="seat"
-                               {{ $seat->isBooked($movie, $date, $showtime) ? 'disabled' : '' }}>
-                        <span>
+            <span>
                             {{ $seat->seat_number }}
                         </span>
+                        <li class="meow seat {{ $seat->isBooked($movie, $date, $showtime) ? 'disabled' : '' }}">
+
+                    <label for="seat{{ $seat->id }}">
+                        <input type="checkbox" name="seats[]" id="seat{{ $seat->id }}"
+                               value="{{ $seat->id }}" class="seat-checkbox" 
+                               {{ $seat->isBooked($movie, $date, $showtime) ? 'disabled' : '' }}>
+                        
                     </label>
                 </li>
+               
             @endforeach
             <span>J</span>
         </div>
@@ -574,17 +576,26 @@ border:1px solid ;
    
 }
 
+
+
+
+/* ei jaygaei change korte hobe */
+
+
+
+
+
 .book .right .chair .row{
     width:100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 5px;
 }
-.book .right .chair .row li{
+.meow{
    position: relative;
-   width: 25px;
-   height: 15px;
+   width: 35px;
+   height: 25px;
    background: rgb(184, 184, 184, .3);
    list-style: none;
    border-radius: 5px;
@@ -612,41 +623,32 @@ border:1px solid ;
  }
  
 
-.book .right .chair .row li:hover{
+/* .book .right .chair .row li:hover{
    background: greenyellow; 
    color:#000;
-}
+} */
 
-.book .right .chair .row li:nth-child(6){
+.book .right .chair .row li:nth-child(3){
   margin-right: 30px;
  }
 
- .book .right .chair .row li:nth-last-child(6){
+ .book .right .chair .row li:nth-last-child(1){
     margin-left: 30px;
    }
 
    .book .right .chair .row span{
 color:#fff;
-    font-size:11px;
+    font-size:8px;
     font-weight: 600;
+    margin-left: 15px;
    }
 
  /* java class for colors   */
 
- .book .right .chair .booked
- {
-background: #fd6565 !important;
-
- }
 
 
- .book .right .chair .selected
- {
-background: greenyellow !important;
-color: #000 !important;
 
- } 
-    
+ 
   
 .book .right .details
 {
@@ -754,49 +756,143 @@ transition: .3s linear;
  } 
 
 
+/* 
 
 
 
- 
 
-                /* Styles for all seat labels */
-.seat-label {
-    cursor: pointer;
-    display: inline-block;
-    margin: 5px;
-    padding: 10px;
-    background-color: yellowgreen;
-    border-radius: 4px;
-    transition: box-shadow 0.3s ease;
+/* 
+.seat-checkbox:disabled + label {
+    background-color: red;
+    cursor: not-allowed;
+    pointer-events: none; 
+}
+
+
+.seat-checkbox:disabled + label:hover,
+.seat-checkbox:disabled + label li:hover {
+    box-shadow: none;
+    background-color: red; 
+}
+
+
+.seat-checkbox:disabled + label li,
+.seat-checkbox:disabled + label {
+    background-color: red; 
+    color: white; 
+    cursor: not-allowed;
+} */
+
+
+
+
+
+/* .book .right .chair .row li {
+   position: relative;
+   width: 35px;
+   height: 25px;
+   background: rgb(184, 184, 184, .3);
+   list-style: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: .3s linear;
+   font-size: 7px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: #fff;
+   font-weight: 600;
+} */
+
+/* .book .right .chair .row li:before {
+   content: '';
+   position: absolute;
+   width: 100%;
+   height: 5px;
+   background: rgb(184, 184, 184, .1);
+   bottom: -8px;
+   border-radius: 10px;
+} */
+
+/* Hover effect for available seats */
+
+
+
+.book .right .chair .row {
+   margin-bottom: 15px; /* Adjust the space as needed */
+}
+
+.book .right .chair .row li {
+   position: relative;
+   width: 30px;
+   height: 20px;
+   background: rgb(184, 184, 184, .1);
+   list-style: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: .3s linear;
+   font-size: 7px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: #fff;
+   font-weight: 600;
+}
+
+.book .right .chair .row li:before {
+   content: '';
+   position: absolute;
+   width: 100%;
+   height: 5px;
+   background: rgb(184, 184, 184, .1);
+   bottom: -8px;
+   border-radius: 10px;
 }
 
 /* Hover effect for available seats */
-.seat-label:hover {
-    box-shadow: 0 2px 10px green;
+.book .right .chair .row li:hover {
+    box-shadow: 0 0 10px yellowgreen;
+    cursor: pointer;
+    background:transparent
 }
 
-/* Styles for the checkbox */
-.seat-checkbox {
-    margin-right: 5px;
-}
-
-/* Styles for unavailable seats */
-.seat-checkbox:disabled + span {
-    background-color: red;
+/* Styles for disabled seats */
+.book .right .chair .row li.disabled, 
+.book .right .chair .row li.disabled:hover { /* Override hover for disabled */
+    background: red;
     cursor: not-allowed;
+    pointer-events: none;
 }
-     
-              
 
-  
-
- 
+.book .right .chair .row li.disabled input[type="checkbox"] {
+    visibility: hidden; /* Hide checkbox for disabled seats */
+}
 
 
 
 
 
-    
+
+
+
+
+
+.book .right .chair .row li:hover {
+    box-shadow: 0 0 20px green;
+    cursor: pointer; /* Ensure cursor pointer on hover */
+}
+
+/* Styles for disabled seats */
+.book .right .chair .row li.disabled, 
+.book .right .chair .row li.disabled:hover { /* Override hover for disabled */
+    background: red;
+    cursor: not-allowed; /* Show cursor as not-allowed for disabled seats */
+    pointer-events: none; /* Disable all interactions */
+}
+
+.book .right .chair .row li.disabled input[type="checkbox"] {
+    visibility: hidden; /* Hide the checkbox in disabled state */
+}
 
 
 

@@ -47,6 +47,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/movies', [AdminController::class, 'movieInfo'])->name('admin.iinfo'); // Add this line
     Route::post('/movies', [AdminController::class, 'store'])->name('movies.store');
+    Route::get('/moviesinfo', [AdminController::class, 'movieInfo'])->name('admin.movies.show');
+    Route::get('/moviestime/{movie}', [AdminController::class, 'show'])->name('admin.datetime');
 });
 
 

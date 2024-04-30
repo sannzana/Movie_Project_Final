@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Enums\BookingStatus;
 use App\Models\Booking;
@@ -24,7 +24,7 @@ class AdminController extends Controller
 public function movieInfo()
 {
     $movies = Movie::all(); 
-    return view('admin.iinfo', compact('movies')); 
+    return view('admin.information', compact('movies')); 
 
 
 }
@@ -107,4 +107,27 @@ public function store(Request $request)
 
         return redirect()->route('admin.iinfo')->with('success', 'Movie and dates saved successfully!');
     }
+
+
+
+    public function show(Movie $movie): View
+    {
+        $currentDate = today('Asia/Jakarta')->format('Y-m-d');
+        $currentTime = now('Asia/Jakarta')->format('H:i:s');
+    
+        // Load all dates related to the movie
+        $movies = $movie->loadAllDates();
+    
+        return view('admin.datetime', compact('movies', 'currentDate', 'currentTime'));
+    }
+    
+
+
+
+
+
+
+
+
+
 }

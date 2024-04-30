@@ -66,9 +66,9 @@
                     <div class="nav-item dropdown">
                         <a href="{{ route('admin.iinfo') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Movies</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{ route('admin.iinfo') }}"class="dropdown-item">Buttons</a>
-                            <a href="typography.html" class="dropdown-item">Typography</a>
-                            <a href="element.html" class="dropdown-item">Other Elements</a>
+                            <a href="{{ route('admin.iinfo') }}"class="dropdown-item">Insert_Movie</a>
+                            <a href="{{ route('admin.movies.show') }}" class="dropdown-item">Information_movie</a>
+                            <a href="#" class="dropdown-item">DateAndTime</a>
                         </div>
                     </div>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
