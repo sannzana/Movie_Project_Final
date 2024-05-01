@@ -96,7 +96,7 @@
 </div>
 
 
-   <section id="dates-showtimes" class="container">
+  <section id="dates-showtimes" class="container">
     <h2>Dates and Showtimes</h2>
     <div class="grid">
         @foreach ($movie->dates as $date)
@@ -123,7 +123,7 @@
             </div>
         @endforeach
     </div>
-</section>
+</section> 
 
 
 </div>

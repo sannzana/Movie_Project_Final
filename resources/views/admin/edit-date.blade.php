@@ -1,4 +1,6 @@
+@extends('admin.dashlay')
 
+@section('body2')
     <h2>Edit Date</h2>
     <form action="{{ route('admin.date.update', $date->id) }}" method="POST">
         @csrf
@@ -13,7 +15,7 @@
     </form>
 
 
-
+@endsection
 
 
 

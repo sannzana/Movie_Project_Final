@@ -1,6 +1,8 @@
 
+@extends('admin.dashlay')
 
-<form action="{{ route('admin.movies.update', $movie->id) }}" method="POST" enctype="multipart/form-data">
+@section('body2')
+       <form action="{{ route('admin.movies.update', $movie->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <input type="text" name="title" value="{{ $movie->title }}" required>
@@ -16,5 +18,6 @@
     <input type="text" name="age_rating" value="{{ $movie->age_rating }}">
     <input type="number" name="ticket_price" value="{{ $movie->ticket_price }}">
     <button type="submit">Update Movie</button>
-</form>
+   </form>
 
+@endsection

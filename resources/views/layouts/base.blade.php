@@ -95,6 +95,19 @@
 
 
 
+   
+        
+
+     <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="csstes/bootstrap.css" />
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="csstes/style.css" rel="stylesheet" />
+<!-- responsive style -->
+<!-- <link href="csstes/responsive.css" rel="stylesheet" /> -->
+  
+       
 
 
 </head>
@@ -115,6 +128,21 @@
 
     <!-- Template Javascript -->
     <script src="js2/main.js"></script>
+
+
+
+
+
+
+
+
+
+    <script src="jstes/jquery-3.4.1.min.js"></script>
+  <script src="jstes/bootstrap.js"></script>
+  <script src="jstes/custom.js"></script>
+
+
+
 </body>
   <!-- JavaScript Libraries -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -144,7 +172,26 @@
 
 
 
+<!-- Include all js compiled plugins (below), or include individual files as needed -->
 
+<script src="assets/js/jquery.js"></script>
+        
+        <!--modernizr.min.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		
+		<!--bootstrap.min.js-->
+        <script src="assets/js/bootstrap.min.js"></script>
+		
+		<!-- bootsnav js -->
+		<script src="assets/js/bootsnav.js"></script>
+
+		<!--owl.carousel.js-->
+        <script src="assets/js/owl.carousel.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+        <!--Custom JS-->
+        <script src="assets/js/custom.js"></script>
 
 
 
