@@ -144,4 +144,44 @@ class BookingController extends Controller
             ->route('bookings.index')
             ->with('success', 'Booking cancelled!');
     }
+
+
+
+
+
+
+
+    
+        // Existing methods...
+    
+        public function editDate(Movie $movie, Date $date)
+        {
+            // Load edit form for specific date of a movie
+            return view('admin.edit_date', compact('movie', 'date'));
+        }
+    
+        public function updateDate(Request $request, Movie $movie, Date $date)
+        {
+            // Validate input
+            $validated = $request->validate([
+                'date' => 'required|date',
+            ]);
+    
+            // Update the date
+            $date->update($validated);
+    
+            return redirect()->route('admin.movies.datetime', $movie)->with('success', 'Date updated successfully!');
+        }
+    
+        public function deleteDate(Movie $movie, Date $date)
+        {
+            // Delete the date
+            $date->delete();
+    
+            return redirect()->route('admin.movies.datetime', $movie)->with('success', 'Date deleted successfully!');
+        }
+
+
+
+
 }

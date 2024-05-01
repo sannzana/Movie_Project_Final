@@ -45,10 +45,36 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/movies', [AdminController::class, 'movieInfo'])->name('admin.iinfo'); // Add this line
+    Route::get('/movies', [AdminController::class, 'movie'])->name('admin.iinfo'); // Add this line
     Route::post('/movies', [AdminController::class, 'store'])->name('movies.store');
     Route::get('/moviesinfo', [AdminController::class, 'movieInfo'])->name('admin.movies.show');
-    Route::get('/moviestime/{movie}', [AdminController::class, 'show'])->name('admin.datetime');
+    // Route::get('/admin/{movie}', [AdminController::class, 'show'])->name('admin.movies.datetime');
+
+    Route::get('/movies/{movie}/datetime', [AdminController::class, 'show'])->name('admin.movies.datetime'); // Added this line
+
+ 
+   
+
+    Route::delete('/movies/date/{date}', [AdminController::class, 'deleteDate'])->name('admin.date.delete');
+    // Route::get('/dates/{date}/edit', [AdminController::class, 'editDate'])->name('admin.date.edit');
+
+  
+    Route::put('/dates/{date}', [AdminController::class, 'updateDate'])->name('admin.date.update');
+
+
+
+// movie update and delete
+Route::delete('/movies/{id}', [AdminController::class, 'delete'])->name('admin.movies.delete');
+
+// These should already be added, but double check if they are correctly set
+Route::get('/movies/{id}/edit', [AdminController::class, 'edit'])->name('admin.movies.edit');
+Route::put('/movies/{id}', [AdminController::class, 'update'])->name('admin.movies.update');
+
+
 });
 
 
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

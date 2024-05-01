@@ -21,6 +21,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        
     ];
 
     /**
@@ -45,6 +46,9 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
+
+
+ 
 
     /**
      * The application's middleware aliases.
@@ -75,7 +79,7 @@ class Kernel extends HttpKernel
         // existing middleware
         'auth' => \App\Http\Middleware\Authenticate::class,
         // other middleware
-
+        'nocache' => \App\Http\Middleware\NoCacheMiddleware::class,
         // add your custom middleware here
         'isAdmin' => \App\Http\Middleware\IsAdmin::class,
     ];

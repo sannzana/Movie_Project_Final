@@ -1,50 +1,132 @@
-@extends('admin.dashlay')
-
-@section('body2')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
     
+
 <h2>Responsive Table without Bootstrap</h2>
 
 <div class="table-container">
-  <table class="responsive-table">
-    <caption class="table-caption">An example of a responsive table using custom CSS:</caption>
-    <thead>
-      <tr>
+    <table class="responsive-table">
+        <caption class="table-caption">An example of a responsive table using custom CSS:</caption>
+        <thead>
+    <tr>
         <th>Ongoing Movies</th>
         <th>Movie-Title</th>
-        <th>Director</th>
         <th>Release-Date</th>
-        <th>Cast</th>
         <th>Poster</th>
         <th>Duration</th>
-        <th>Description</th>
-        <th>Dates And Times</th>
-        <th>EDIT</th>
-        <th>DELETE</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($movies as $movie)
-      <tr>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
         <td data-label="Ongoing Movies">{{ $movie->id }}</td>
         <td data-label="Movie-Title">{{ $movie->title }}</td>
-        <td data-label="Director">{{ $movie->director }}</td>
         <td data-label="Release-Date">{{ $movie->release_date }}</td>
-        <td data-label="Cast">{{ $movie->starring }}</td>
         <td data-label="Poster">
-          <img src="{{ Storage::url($movie->poster_url) }}" style="width: 100%; height: auto; max-height: 100px;">
+            <img src="{{ Storage::url($movie->poster_url) }}" style="width: 100%; height: auto; max-height: 100px;">
         </td>
         <td data-label="Duration">{{ $movie->duration }}</td>
-        <td data-label="Description">{{ $movie->description }}</td>
-        <td data-label="Dates And Times"> <a href="{{ route('admin.movies.datetime', $movie->id) }}">Click To View Date and Time</a></td>
-        <td data-label="EDIT">{{ $movie->starring }}</td>
-        <td data-label="DELETE">{{ $movie->starring }}</td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
+        <td data-label="Edit">
+            <a href="{{ route('admin.movies.edit', $movie->id) }}">
+                <button type="button">Update</button>
+            </a>
+        </td>
+        <td data-label="Delete">
+            <form action="{{ route('admin.movies.delete', $movie->id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+</tbody>
+</table>
 </div>
+                {{-- Inside your admin.times Blade view --}}
+                @foreach ($movie->dates as $date)
+    <div>
+        <h4>Date: {{ $date->date }}</h4>
+        <form action="{{ route('admin.date.update', $date) }}" method="POST">
+            @csrf
+            @method('PUT')
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" value="{{ $date->date }}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Date</button>
+        </form>
+
+       
+
+        <form action="{{ route('admin.date.delete', $date) }}" method="POST" onsubmit="return confirm('Are you sure?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete Date</button>
+        </form>
+
+        <ul>
+            @foreach ($date->showtimes as $showtime)
+                <li>
+                    {{ $showtime->start_time }} - {{ $showtime->end_time }}
+                </li>
+            @endforeach
+        </ul>
+    </div>
+@endforeach
+
+
+
 
 <p class="p">Demo by George Martsoukos. <a href="http://www.sitepoint.com/responsive-data-tables-comprehensive-list-solutions" target="_blank">See article</a>.</p>
+
+
+<section id="dates-showtimes" class="container">
+    <h2>Dates and Showtimes</h2>
+    <div class="grid">
+        @foreach ($movie->dates as $date)
+            <div class="date-card">
+                <h3>{{ $date->date->format('D, j M Y') }}</h3>
+                <ul>
+                    @foreach ($date->showtimes as $showtime)
+                        @php
+                            $formattedDate = $date->date->format('Y-m-d');
+                            $isToday = $formattedDate == $currentDate;
+                            $isPastDate = $formattedDate < $currentDate;
+                            $isPastShowtime = $showtime->start_time < $currentTime;
+                            $disabled = $isPastDate || ($isToday && $isPastShowtime);
+                        @endphp
+                        <li class="{{ $disabled ? 'disabled' : 'available' }}">
+                            <a href="{{ route('bookings.create', [$movie, $date, $showtime]) }}">
+                                <button type="button">
+                                    {{ $showtime->start_time }} - {{ $showtime->end_time }}
+                                </button>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endforeach
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
 
 <style>
 h2 {
@@ -248,32 +330,6 @@ h2 {
 
 
 
-/* @media (max-width: 1024px) {
-  .responsive-table, .responsive-table th, .responsive-table td {
-    font-size: 16px; 
-  }
-
-  .responsive-table th, .responsive-table td {
-    padding: 10px 6px; 
-  }
-}
-
-
-@media (max-width: 1024px) and (max-height: 600px) {
-  .responsive-table, .responsive-table th, .responsive-table td {
-    font-size: 14px; 
-  }
-
-  .responsive-table th, .responsive-table td {
-    padding: 8px; 
-  }
-
-  .responsive-table {
-  
-  }
-} */
-
-
 
 
 
@@ -344,7 +400,9 @@ h2 {
 }
 
 </style>
+</body>
+</html>
 
 
  
-         @endsection
+   
