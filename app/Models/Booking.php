@@ -19,7 +19,7 @@ class Booking extends Model
      */
     protected $fillable = [
         'user_id',
-        'date_movie_id',
+        'movie_id',  // Ensure this matches your table schema
         'date_showtime_id',
         'total_price',
         'status',
@@ -62,7 +62,7 @@ class Booking extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(Showtime::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -75,3 +75,4 @@ class Booking extends Model
         return $this->belongsToMany(Seat::class, 'booked_seats');
     }
 }
+

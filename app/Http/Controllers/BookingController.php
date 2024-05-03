@@ -13,6 +13,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -137,7 +138,7 @@ class BookingController extends Controller
         }
 
         $user = User::find(auth()->id());
-        $user->balance += $booking->total_price;
+        // $user->balance += $booking->total_price;
         $user->update();
 
         return redirect()
@@ -147,6 +148,42 @@ class BookingController extends Controller
 
 
 
+
+
+    public function index2(Request $request)
+{
+    $timeframe = $request->input('timeframe', 'all'); // Defaults to 'all' if not specified
+
+    $query = Booking::with(['movie', 'user', 'dateShowtime.date', 'dateShowtime.showtime', 'seats']);
+
+    switch ($timeframe) {
+        case 'day':
+            $query->whereDate('created_at', Carbon::today());
+            break;
+        case 'week':
+            $query->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]);
+            break;
+        case 'month':
+            $query->whereMonth('created_at', Carbon::now()->month);
+            break;
+    }
+
+    $bookings = $query->get()->map(function ($booking) {
+        return [
+            'id' => $booking->id,  // Ensure this line is added to include the booking ID
+            'movie_title' => $booking->movie->title ?? 'N/A',
+            'date' => $booking->dateShowtime->date->date ?? 'N/A',
+            'start_time' => $booking->dateShowtime->showtime->start_time ?? 'N/A',
+            'end_time' => $booking->dateShowtime->showtime->end_time ?? 'N/A',
+            'seat_numbers' => $booking->seats->pluck('seat_number')->toArray(),
+            'total_price' => $booking->total_price,
+            'user_id' => $booking->user->id ?? 'User Deleted',
+            'user_name' => $booking->user->name ?? 'User Deleted',
+        ];
+    });
+
+    return view('admin.bookinginfo', compact('bookings', 'timeframe'));
+}
 
 
 
@@ -183,5 +220,12 @@ class BookingController extends Controller
 
 
 
+        public function destroy($id)
+{
+    $booking = Booking::findOrFail($id);
+    $booking->delete();
+
+    return redirect()->route('admin.bookings')->with('success', 'Booking deleted successfully');
+}
 
 }

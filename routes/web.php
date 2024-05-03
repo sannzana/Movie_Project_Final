@@ -71,6 +71,9 @@ Route::get('/movies/{id}/edit', [AdminController::class, 'edit'])->name('admin.m
 Route::put('/movies/{id}', [AdminController::class, 'update'])->name('admin.movies.update');
 
 
+Route::get('/admin/bookings', [BookingController::class, 'index2'])->name('admin.bookings');
+Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
+
 });
 
 

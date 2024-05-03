@@ -13,14 +13,21 @@ use App\Models\Showtime;
 // use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
     public function dashboard()
 {
-    // Just an example to fetch some data
-    return view('admin.dashboard');
+    $today = Carbon::today();
+    $startOfMonth = Carbon::now()->startOfMonth();
+
+    $todaySales = Booking::whereDate('created_at', $today)
+                        ->sum('total_price');
+    $monthlySales = Booking::whereBetween('created_at', [$startOfMonth, now()])
+                           ->sum('total_price');
+    $totalRevenue = Booking::sum('total_price');
+    return view('admin.dashboard',compact('todaySales', 'monthlySales', 'totalRevenue'));
 }
 
 public function movieInfo()
@@ -206,6 +213,23 @@ public function delete($id)
 
     return redirect()->route('admin.movies.show')->with('success', 'Movie deleted successfully!');  // Redirect to the movies index with a success message
 }
+
+
+
+
+public function dashboard2()
+    {
+        $today = Carbon::today();
+        $startOfMonth = Carbon::now()->startOfMonth();
+
+        $todaySales = Booking::whereDate('created_at', $today)
+                            ->sum('total_price');
+        $monthlySales = Booking::whereBetween('created_at', [$startOfMonth, now()])
+                               ->sum('total_price');
+        $totalRevenue = Booking::sum('total_price');
+
+        return view('admin.dashlay', compact('todaySales', 'monthlySales', 'totalRevenue'));
+    }
 
 
 

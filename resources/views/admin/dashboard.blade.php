@@ -12,8 +12,8 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Today Sale</p>
-                                <h6 class="mb-0">$1234</h6>
+                            <p class="mb-2">Today Sale</p>
+                        <h6 class="mb-0">৳{{ number_format($todaySales, 2) }}</h6>
                             </div>
                         </div>
                     </div>
@@ -21,8 +21,8 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total Sale</p>
-                                <h6 class="mb-0">$1234</h6>
+                            <p class="mb-2">Monthly Sale</p>
+                        <h6 class="mb-0">৳{{ number_format($monthlySales, 2) }}</h6>
                             </div>
                         </div>
                     </div>
@@ -39,8 +39,8 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
+                            <p class="mb-2">Total Revenue</p>
+                        <h6 class="mb-0">৳{{ number_format($totalRevenue, 2) }}</h6>
                             </div>
                         </div>
                     </div>
