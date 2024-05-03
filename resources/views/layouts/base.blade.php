@@ -67,7 +67,9 @@
 
 
 
-
+<link href="csstes/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="csstes/responsive.css" rel="stylesheet" />
 
 
 
@@ -99,13 +101,10 @@
         
 
      <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="csstes/bootstrap.css" />
 
-<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="csstes/style.css" rel="stylesheet" />
-<!-- responsive style -->
-<!-- <link href="csstes/responsive.css" rel="stylesheet" /> -->
+
+
+
   
        
 
@@ -129,17 +128,36 @@
     <!-- Template Javascript -->
     <script src="js2/main.js"></script>
 
+    <script type="text/javascript" src="jstes/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="jstes/bootstrap.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- owl carousel script 
+    -->
+  <script type="text/javascript">
+    $(".owl-carousel").owlCarousel({
+      loop: true,
+      margin: 0,
+      navText: [],
+      center: true,
+      autoplay: true,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        1000: {
+          items: 3
+        }
+      }
+    });
+  </script>
 
 
 
 
 
 
-
-
-    <script src="jstes/jquery-3.4.1.min.js"></script>
-  <script src="jstes/bootstrap.js"></script>
-  <script src="jstes/custom.js"></script>
 
 
 

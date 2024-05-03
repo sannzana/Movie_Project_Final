@@ -871,62 +871,383 @@
         <!-- Blog End -->
 
         <!-- Testimonial Start -->
-     <section class="client_section layout_padding">
+
+
+
+        <section class="client_section">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-9 col-md-10 mx-auto">
-          <div class="heading_container">
-            <h2>
-              Testimonial
-            </h2>
-          </div>
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active" style="height:300px">
-                <div class="detail-box" >
-                  <h4>
-                    John Hissona
-                  </h4>
-                  <p>
-                    passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If youThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in s
-                  </p>
-                  <!-- <img src="imagestes/quote.png" alt=""> -->
-                </div>
+      <div class="heading_container">
+        <h2>
+          WHAT CUSTOMERS SAY
+        </h2>
+      </div>
+      <div class="carousel-wrap ">
+        <div class="owl-carousel owl-loaded owl-drag">
+          
+          
+          
+        <div class="owl-stage-outer"><div class="owl-stage" style="transition: all 0.25s ease 0s; width: 2691px; transform: translate3d(-1153px, 0px, 0px);"><div class="owl-item cloned" style="width: 384.4px;"><div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="imagestes/c-2.png" alt="">
               </div>
-              <div class="carousel-item" style="height:300px">
-                <div class="detail-box">
-                  <h4>
-                    John Hissona
-                  </h4>
-                  <p>
-                    passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If youThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in s
-                  </p>
-                  <!-- <img src="images/quote.png" alt=""> -->
-                </div>
-              </div>
-              <div class="carousel-item" style="height:300px;">
-                <div class="detail-box">
-                  <h4>
-                    John Hissona
-                  </h4>
-                  <p>
-                    passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If youThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in s
-                  </p>
-                  <!-- <img src="images/quote.png" alt=""> -->
-                </div>
+              <div class="detail-box">
+                <h5>
+                  Tempor incididunt <br>
+                  <span>
+                    Dipiscing elit
+                  </span>
+                </h5>
+                <img src="imagestes/quote.png" alt="">
+                <p>
+                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                </p>
               </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="sr-only">Next</span>
-            </a>
+          </div></div><div class="owl-item cloned" style="width: 384.4px;"><div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="imagestes/c-3.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Tempor incididunt <br>
+                  <span>
+                    Dipiscing elit
+                  </span>
+                </h5>
+                <img src="imagestes/quote.png" alt="">
+                <p>
+                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                </p>
+              </div>
+            </div>
+          </div></div><div class="owl-item" style="width: 384.4px;"><div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="imagestes/c-1.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Tempor incididunt <br>
+                  <span>
+                    Dipiscing elit
+                  </span>
+                </h5>
+                <img src="imagestes/quote.png" alt="">
+                <p>
+                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                </p>
+              </div>
+            </div>
+          </div></div><div class="owl-item active center" style="width: 384.4px;"><div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="imagestes/c-2.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Tempor incididunt <br>
+                  <span>
+                    Dipiscing elit
+                  </span>
+                </h5>
+                <img src="imagestes/quote.png" alt="">
+                <p>
+                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                </p>
+              </div>
+            </div>
+          </div></div><div class="owl-item" style="width: 384.4px;"><div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="imagestes/c-3.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Tempor incididunt <br>
+                  <span>
+                    Dipiscing elit
+                  </span>
+                </h5>
+                <img src="imagestes/quote.png" alt="">
+                <p>
+                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                </p>
+              </div>
+            </div>
+          </div></div><div class="owl-item cloned" style="width: 384.4px;"><div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="imagestes/c-1.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Tempor incididunt <br>
+                  <span>
+                    Dipiscing elit
+                  </span>
+                </h5>
+                <img src="imagestes/quote.png" alt="">
+                <p>
+                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                </p>
+              </div>
+            </div>
+          </div></div><div class="owl-item cloned" style="width: 384.4px;"><div class="item">
+            <div class="box">
+              <div class="img-box">
+                <img src="imagestes/c-2.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Tempor incididunt <br>
+                  <span>
+                    Dipiscing elit
+                  </span>
+                </h5>
+                <img src="imagestes/quote.png" alt="">
+                <p>
+                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                </p>
+              </div>
+            </div>
+          </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"></button><button type="button" role="presentation" class="owl-next"></button></div><div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+        <section class="target_section layout_padding2" style="background-color: black;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="detail-box">
+            <h2>
+              1000+
+            </h2>
+            <h5>
+              Years of Business
+            </h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="detail-box">
+            <h2>
+              20000+
+            </h2>
+            <h5>
+              Projects Delivered
+            </h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="detail-box">
+            <h2>
+              10000+
+            </h2>
+            <h5>
+              Satisfied Customers
+            </h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="detail-box">
+            <h2>
+              1500+
+            </h2>
+            <h5>
+              Cups of Coffee
+            </h5>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- end target section -->
+
+
+  <!-- contact section -->
+
+  <section class="contact_section layout_padding">
+    <div class="container">
+
+      <div class="heading_container">
+        <h2>
+          Request A Call Back
+        </h2>
+      </div>
+      <div class="">
+        <div class="">
+          <div class="row">
+            <div class="col-md-9 mx-auto">
+              <div class="contact-form">
+                <form action="">
+                  <div>
+                    <input type="text" placeholder="Full Name ">
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Phone Number">
+                  </div>
+                  <div>
+                    <input type="email" placeholder="Email Address">
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Message" class="input_message">
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn_on-hover">
+                      Send
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="map_img-box">
+        <img src="images/map-img.png" alt="">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- end contact section -->
+
+
+  <!-- info section -->
+  <section class="info_section ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="info_contact">
+            <h5>
+              About Shop
+            </h5>
+            <div>
+              <div class="img-box">
+                <img src="images/location-white.png" width="18px" alt="">
+              </div>
+              <p>
+                Address
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="images/telephone-white.png" width="12px" alt="">
+              </div>
+              <p>
+                +01 1234567890
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="images/envelope-white.png" width="18px" alt="">
+              </div>
+              <p>
+                demo@gmail.com
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_info">
+            <h5>
+              Informations
+            </h5>
+            <p>
+              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="info_insta">
+            <h5>
+              Instagram
+            </h5>
+            <div class="insta_container">
+              <div>
+                <a href="">
+                  <div class="insta-box b-1">
+                    <img src="images/insta.png" alt="">
+                  </div>
+                </a>
+                <a href="">
+                  <div class="insta-box b-2">
+                    <img src="images/insta.png" alt="">
+                  </div>
+                </a>
+              </div>
+
+              <div>
+                <a href="">
+                  <div class="insta-box b-3">
+                    <img src="images/insta.png" alt="">
+                  </div>
+                </a>
+                <a href="">
+                  <div class="insta-box b-4">
+                    <img src="images/insta.png" alt="">
+                  </div>
+                </a>
+              </div>
+              <div>
+                <a href="">
+                  <div class="insta-box b-3">
+                    <img src="images/insta.png" alt="">
+                  </div>
+                </a>
+                <a href="">
+                  <div class="insta-box b-4">
+                    <img src="images/insta.png" alt="">
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_form ">
+            <h5>
+              Newsletter
+            </h5>
+            <form action="">
+              <input type="email" placeholder="Enter your email">
+              <button>
+                Subscribe
+              </button>
+            </form>
+            <div class="social_box">
+              <a href="">
+                <img src="images/fb.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/twitter.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/linkedin.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/youtube.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
         <!-- Testimonial End -->
 
         <!-- Footer Start -->
