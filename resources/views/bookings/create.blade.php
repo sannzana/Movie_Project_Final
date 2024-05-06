@@ -12,9 +12,22 @@
     <title>Document</title>
 </head>
 <body>
+<!-- Confirmation Modal -->
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Confirm Your Booking</h2>
+        <p id="modalMovieTitle"></p>
+        <p id="modalDate"></p>
+        <p id="modalShowtime"></p>
+        <p id="modalSeats"></p>
+        <!-- <p id="modalSeats">Selected Seats: </p> -->
+        <button onclick="submitForm()">Confirm Booking</button>
+        <button onclick="closeModal()">Cancel</button>
+    </div>
+</div>
 
-
-    <form action="{{ route('bookings.store', [$movie, $date, $showtime]) }}" method="POST">
+    <form id="bookingForm" action="{{ route('bookings.store', [$movie, $date, $showtime]) }}" method="POST">
         @csrf
 
 
@@ -120,7 +133,7 @@
 
                     <label for="seat{{ $seat->id }}">
                         <input type="checkbox" name="seats[]" id="seat{{ $seat->id }}"
-                               value="{{ $seat->id }}" class="seat-checkbox" 
+                               value="{{ $seat->id }}" class="seat-checkbox"  onchange="toggleReviewButton()"
                                {{ $seat->isBooked($movie, $date, $showtime) ? 'disabled' : '' }}>
                         
                     </label>
@@ -142,10 +155,12 @@
     </div>
 </div>
 
-<button type="submit" class="book_tic">
+<!-- <button type="button" onclick="reviewBooking()">Review Booking</button> -->
+
+<button type="button" id="reviewBookingBtn" onclick="reviewBooking()" disabled class="book_tic">
 
     <i class="bi bi-check2-circle"></i></button>
-   <h6 style="color: #fff;">Click To Book</h6> 
+   <h6 style="color: #fff;">Click To Review Booking</h6> 
 
 </button>
 </div>
@@ -164,6 +179,49 @@
 
 </form>
 <script src="app22.js"></script>
+
+<script>
+function toggleReviewButton() {
+    // Get all seat checkboxes
+    const seats = document.querySelectorAll('.seat-checkbox');
+    // Check if at least one checkbox is checked
+    const isAnySeatSelected = Array.from(seats).some(checkbox => checkbox.checked);
+
+    // Enable or disable the review booking button based on seat selection
+    const reviewButton = document.getElementById('reviewBookingBtn');
+    reviewButton.disabled = !isAnySeatSelected;
+}
+
+function reviewBooking() {
+    // Assuming modal and other elements are set up as previously described
+    document.getElementById('modalMovieTitle').innerText = document.getElementById('movie').value;
+    document.getElementById('modalDate').innerText = document.getElementById('date').value;
+    document.getElementById('modalShowtime').innerText = document.getElementById('showtime').value;
+
+    const selectedSeats = Array.from(document.querySelectorAll('.seat-checkbox:checked'))
+        .map(input => input.closest('li').previousElementSibling.textContent.trim());  // Fetch the seat number from the span before the li element
+
+    document.getElementById('modalSeats').innerText = 'Selected Seats: ' + selectedSeats.join(', ');
+
+
+    document.getElementById('confirmationModal').style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('confirmationModal').style.display = 'none';
+}
+
+function submitForm() {
+    document.getElementById('bookingForm').submit();
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById('confirmationModal')) {
+        closeModal();
+    }
+}
+
+</script>
 
 
 </body>
@@ -893,6 +951,52 @@ transition: .3s linear;
 .book .right .chair .row li.disabled input[type="checkbox"] {
     visibility: hidden; /* Hide the checkbox in disabled state */
 }
+
+
+
+
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
 
 
 
