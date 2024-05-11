@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 
@@ -87,7 +88,7 @@ class MovieController extends Controller
         $title = request()->input('search');
         $sort = request()->input('sort');
         $movies = Movie::filter($title, $sort)->latest()->paginate(8);
-
+        $reviews = Review::with('user')->where('post', 'Y')->get();
         // Prepare gallery images
         $upperGalleryImages = [
             'extra-left1.jpg', 'left1.jpg', 'left2.jpg', 'left3.jpg',
@@ -104,7 +105,7 @@ class MovieController extends Controller
         ];
 
         // Return the view with both sets of data
-        return view('movies.home', compact('movies', 'upperGalleryImages', 'lowerGalleryImages'));
+        return view('movies.home', compact('movies', 'upperGalleryImages', 'lowerGalleryImages','reviews'));
     }
 
     /**

@@ -29,28 +29,43 @@ class UserController extends Controller
     {
         $formFields = $request->validate([
             'username' => ['required', 'min:5', 'max:20'],
-            'password' => ['required', 'confirmed', 'min:8', 'max:255'],
+            'password' => [
+                'required',
+                'confirmed',
+                'min:8',
+                'max:255',
+                'regex:/[A-Z]/',  // Must contain at least one uppercase letter
+                'regex:/[0-9]/',  // Must contain at least one digit
+            ],
             'name' => ['required', 'min:5', 'max:50'],
             'age' => ['required', 'integer'],
-            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048']
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'phone_number' => ['nullable', 'digits:11'],  // Now nullable, must be exactly 11 digits if provided
         ]);
-
+    
         $formFields['password'] = bcrypt($formFields['password']);
+        
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
             $formFields['image'] = $imagePath;
         } else {
             $formFields['image'] = null; // Explicitly set image to null if no image is uploaded
         }
-
+    
         $formFields['role'] = 'user'; 
-
+    
         User::create($formFields);
-
+    
         return redirect()
             ->route('login')
             ->with('success', 'Account created successfully! Please login using your new account.');
     }
+
+
+
+
+
 
     /**
      * Login redirects to the user login page.

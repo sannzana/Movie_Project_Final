@@ -5,7 +5,7 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ReviewController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
     Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
     Route::patch('/bookings/{booking}', [BookingController::class, 'update'])->name('bookings.update');
+    Route::post('/submit-review', [ReviewController::class, 'store'])->name('review.submit');
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
 });
 
 
@@ -47,6 +49,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/movies', [AdminController::class, 'movie'])->name('admin.iinfo'); // Add this line
     Route::post('/movies', [AdminController::class, 'store'])->name('movies.store');
+    
     Route::get('/moviesinfo', [AdminController::class, 'movieInfo'])->name('admin.movies.show');
     // Route::get('/admin/{movie}', [AdminController::class, 'show'])->name('admin.movies.datetime');
 
@@ -74,7 +77,12 @@ Route::put('/movies/{id}', [AdminController::class, 'update'])->name('admin.movi
 Route::get('/admin/bookings', [BookingController::class, 'index2'])->name('admin.bookings');
 Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
 
+
+Route::get('/admin/reviews', [ReviewController::class, 'showReviews'])->name('admin.reviews');
+Route::patch('/review/{review}/toggle', [ReviewController::class, 'togglePost'])->name('review.toggle');
+
 });
+
 
 
 

@@ -9,84 +9,109 @@
                     Register
                 </h1>
                 <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+    @csrf
 
-                    {{-- username --}}
-                    <div>
-                        <label for="username" class="label">
-                            Username
-                        </label>
-                        <input type="text" name="username" id="username" class="input"
-                               placeholder="Your username" required value="{{ old('username') }}">
-                        @error('username')
-                            <x-error-message :message="$message" />
-                        @enderror
-                    </div>
+    {{-- username --}}
+    <div>
+        <label for="username" class="label">
+            Username
+        </label>
+        <input type="text" name="username" id="username" class="input"
+               placeholder="Your username" required value="{{ old('username') }}">
+        @error('username')
+            <x-error-message :message="$message" />
+        @enderror
+    </div>
 
-                    {{-- name --}}
-                    <div>
-                        <label for="name" class="label">
-                            Name
-                        </label>
-                        <input type="text" name="name" id="name" class="input"
-                               placeholder="Your name" required value="{{ old('name') }}">
-                        @error('name')
-                            <x-error-message :message="$message" />
-                        @enderror
-                    </div>
+    {{-- name --}}
+    <div>
+        <label for="name" class="label">
+            Name
+        </label>
+        <input type="text" name="name" id="name" class="input"
+               placeholder="Your name" required value="{{ old('name') }}">
+        @error('name')
+            <x-error-message :message="$message" />
+        @enderror
+    </div>
 
-                    {{-- age --}}
-                    <div>
-                        <label for="age" class="label">
-                            Age
-                        </label>
-                        <input type="number" name="age" id="age" class="input"
-                               placeholder="Your age" required value="{{ old('age') }}">
-                        @error('age')
-                            <x-error-message :message="$message" />
-                        @enderror
-                    </div>
+    {{-- age --}}
+    <div>
+        <label for="age" class="label">
+            Age
+        </label>
+        <input type="number" name="age" id="age" class="input"
+               placeholder="Your age" required value="{{ old('age') }}">
+        @error('age')
+            <x-error-message :message="$message" />
+        @enderror
+    </div>
 
-                    {{-- image upload --}}
-                    <div>
-                    <label for="user_image" class="label">Profile Image (Optional)</label>
-<div class="file-input">
-    <input type="text" id="file-name" class="file-display" placeholder="No file chosen" readonly>
-    <input type="file" id="user_image" name="image" style="display: none;" onchange="document.getElementById('file-name').value = this.files[0].name">
-    <button type="button" class="file-button" onclick="document.getElementById('user_image').click();">Choose Image</button>
-</div>
+    {{-- email --}}
+    <div>
+        <label for="email" class="label">
+            Email
+        </label>
+        <input type="email" name="email" id="email" class="input"
+               placeholder="Your email" required value="{{ old('email') }}">
+        @error('email')
+            <x-error-message :message="$message" />
+        @enderror
+    </div>
 
+    {{-- phone number (optional) --}}
+    <div>
+        <label for="phone_number" class="label">
+            Phone Number (Optional)
+        </label>
+        <input type="text" name="phone_number" id="phone_number" class="input"
+               placeholder="Your phone number" value="{{ old('phone_number') }}">
+        @error('phone_number')
+            <x-error-message :message="$message" />
+        @enderror
+    </div>
 
-                    {{-- password --}}
-                    <div>
-                        <label for="password" class="label">
-                            Password
-                        </label>
-                        <input type="password" name="password" id="password" class="input" placeholder="••••••••"
-                               required>
-                        @error('password')
-                            <x-error-message :message="$message" />
-                        @enderror
-                    </div>
+    {{-- image upload --}}
+    <div>
+        <label for="user_image" class="label">Profile Image (Optional)</label>
+        <div class="file-input">
+            <input type="text" id="file-name" class="file-display" placeholder="No file chosen" readonly>
+            <input type="file" id="user_image" name="image" style="display: none;" onchange="document.getElementById('file-name').value = this.files[0].name">
+            <button type="button" class="file-button" onclick="document.getElementById('user_image').click();">Choose Image</button>
+        </div>
+    </div>
 
-                    {{-- confirm password --}}
-                    <div>
-                        <label for="password_confirmation" class="label">
-                            Confirm Password
-                        </label>
-                        <input type="password" name="password_confirmation" id="password_confirmation" class="input" placeholder="••••••••"
-                               required>
-                    </div>
+    {{-- password --}}
+    <div>
+        <label for="password" class="label">
+            Password
+        </label>
+        <input type="password" name="password" id="password" class="input" placeholder="••••••••"
+               required>
+        @error('password')
+            <x-error-message :message="$message" />
+        @enderror
+    </div>
 
-                    <button type="submit" class="button">
-                        Sign up
-                    </button>
-                    <p class="link">
-                        Already have an account? <a href="{{ route('login') }}">
-                            Login here
-                        </a>
-                    </p>
-                </form>
+    {{-- confirm password --}}
+    <div>
+        <label for="password_confirmation" class="label">
+            Confirm Password
+        </label>
+        <input type="password" name="password_confirmation" id="password_confirmation" class="input" placeholder="••••••••"
+               required>
+    </div>
+
+    <button type="submit" class="button">
+        Sign up
+    </button>
+    <p class="link">
+        Already have an account? <a href="{{ route('login') }}">
+            Login here
+        </a>
+    </p>
+</form>
+
             </div>
         </div>
     </div>

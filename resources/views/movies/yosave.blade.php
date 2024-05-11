@@ -21,3 +21,45 @@
                             </div>
                         </div>
                     </div>  -->
+
+
+
+
+                    <section class="client_section">
+    <div class="container">
+        <div class="heading_container">
+            <h2>WHAT CUSTOMERS SAY</h2>
+        </div>
+        <div class="carousel-wrap">
+            <div class="owl-carousel owl-loaded owl-drag">
+                @foreach ($reviews as $review)
+                    <div class="item">
+                        <div class="box">
+                        .round-image {
+    border-radius: 50%;  /* Makes the edge of the image round */
+    width: 100px;        /* Example size, adjust as needed */
+    height: 100px;       /* Example size, adjust as needed */
+    object-fit: cover;   /* Ensures the image covers the space without distorting */
+}
+
+
+                            <div class="detail-box">
+                                <h5>
+                                    {{ $review->user->name }} <br>
+                                    <span>{{ $review->user->username }}</span>
+                                </h5>
+                               
+                                <p>{{ $review->review }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+

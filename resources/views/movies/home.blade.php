@@ -224,65 +224,7 @@
 
 
         
-        <!-- About Start -->
-        <div class="container-fluid about py-5">
-            <div class="container py-5">
-                <div class="row g-5 align-items-center">
-                    <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.1s">
-                        <div class="about-item-image d-flex">
-                            <img src="img3/about.jpg" class="img-1 img-fluid w-50"  alt="">
-                            <img src="img3/about-3.jpg" class="img-2 img-fluid w-50"  alt="">
-                            <div class="about-item-image-content">
-                                <img src="img3/about-1.png" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.1s">
-                        <div class="about-item-content">
-                            <p class="text-uppercase text-secondary fs-5 mb-0">WE ARE CONSTRUCTION COMPANY</p>
-                            <h2 class="display-4 text-capitalize mb-3">Making your vision come true at the basics.</h2>
-                            <p class="mb-4 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            </p>
-                            <div class="pb-4 mb-4 border-bottom">
-                                <div class="row g-4">
-                                    <div class="col-lg-4">
-                                        <div class="about-item-content-img">
-                                            <img src="img3/about-2.jpg" class="img-fluid w-100" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="d-flex mb-4">
-                                            <div class="text-secondary">
-                                                <i class="fas fa-user-shield fa-3x"></i>
-                                            </div>
-                                            <h4 class="ms-3">Building quality standards</h4>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="text-secondary">
-                                                <i class="fas fa-users-cog fa-3x"></i>
-                                            </div>
-                                            <h4 class="ms-3">Certified engineer’s team</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row gy-0 gx-4 justify-content-between pb-4">
-                                <div class="col-lg-6">
-                                    <p class="text-dark"><i class="fas fa-check text-secondary me-1"></i> 100% Satisfaction</p>
-                                    <p class="text-dark"><i class="fas fa-check text-secondary me-1"></i> Trained Emploies</p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <p class="text-dark"><i class="fas fa-check text-secondary me-1"></i> Annual Pass Programs</p>
-                                    <p class="text-dark mb-0"><i class="fas fa-check text-secondary me-1"></i> Flexible and cost effective</p>
-                                </div>
-                            </div>
-                            <a class="btn btn-secondary d-inline-block py-3 px-5 me-2 flex-shrink-0 wow fadeInUp" data-wow-delay="0.1s" href="#">Discover More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- About End -->
+       
 
 <!-- ongoing movies -->
 
@@ -498,7 +440,63 @@
 
 
 
-
+        <div class="container-fluid feature bg-light py-5">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.1s">
+                        <div class="about-item-image d-flex">
+                            <img src="img3/about.jpg" class="img-1 img-fluid w-50"  alt="">
+                            <img src="img3/about-3.jpg" class="img-2 img-fluid w-50"  alt="">
+                            <div class="about-item-image-content">
+                                <img src="img3/about-1.png" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.1s">
+                        <div class="about-item-content">
+                            <p class="text-uppercase text-secondary fs-5 mb-0"> "Savor the Stars:</p>
+                            <h4 class="display-4 text-capitalize mb-3" sstyle="font-size:10px;">Every Bite as Epic as the Blockbuster!"</h4>
+                            <p class="mb-4 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                            </p>
+                            <div class="pb-4 mb-4 border-bottom">
+                                <div class="row g-4">
+                                    <div class="col-lg-4">
+                                        <div class="about-item-content-img">
+                                            <img src="img3/about-2.jpg" class="img-fluid w-100" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="d-flex mb-4">
+                                            <div class="text-secondary">
+                                                <i class="fas fa-user-shield fa-3x"></i>
+                                            </div>
+                                            <h4 class="ms-3">Building quality standards</h4>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="text-secondary">
+                                                <i class="fas fa-users-cog fa-3x"></i>
+                                            </div>
+                                            <h4 class="ms-3">Certified engineer’s team</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gy-0 gx-4 justify-content-between pb-4">
+                                <div class="col-lg-6">
+                                    <p class="text-dark"><i class="fas fa-check text-secondary me-1"></i> 100% Satisfaction</p>
+                                    <p class="text-dark"><i class="fas fa-check text-secondary me-1"></i> Trained Emploies</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <p class="text-dark"><i class="fas fa-check text-secondary me-1"></i> Annual Pass Programs</p>
+                                    <p class="text-dark mb-0"><i class="fas fa-check text-secondary me-1"></i> Flexible and cost effective</p>
+                                </div>
+                            </div>
+                            <a class="btn btn-secondary d-inline-block py-3 px-5 me-2 flex-shrink-0 wow fadeInUp" data-wow-delay="0.1s" href="#">Discover More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -874,150 +872,35 @@
 
 
 
+
         <section class="client_section">
     <div class="container">
-      <div class="heading_container">
-        <h2>
-          WHAT CUSTOMERS SAY
-        </h2>
-      </div>
-      <div class="carousel-wrap ">
-        <div class="owl-carousel owl-loaded owl-drag">
-          
-          
-          
-        <div class="owl-stage-outer"><div class="owl-stage" style="transition: all 0.25s ease 0s; width: 2691px; transform: translate3d(-1153px, 0px, 0px);"><div class="owl-item cloned" style="width: 384.4px;"><div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="imagestes/c-2.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Tempor incididunt <br>
-                  <span>
-                    Dipiscing elit
-                  </span>
-                </h5>
-                <img src="imagestes/quote.png" alt="">
-                <p>
-                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                </p>
-              </div>
+        <div class="heading_container">
+            <h2>WHAT CUSTOMERS SAY</h2>
+        </div>
+        <div class="carousel-wrap">
+            <div class="owl-carousel owl-loaded owl-drag">
+                @foreach ($reviews as $review)
+                    <div class="item">
+                        <div class="box">
+                        <div class="img-box">
+    <img src="{{ asset('storage/' . $review->user->image) }}" alt="{{ $review->user->name }}" style="border-radius: 50%; width: 100px; height: 50px; object-fit: cover;">
+</div>
+                            <div class="detail-box">
+                                <h5>
+                                    {{ $review->user->name }} <br>
+                                    <span>{{ $review->user->username }}</span>
+                                </h5>
+                               
+                                <p>{{ $review->review }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-          </div></div><div class="owl-item cloned" style="width: 384.4px;"><div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="imagestes/c-3.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Tempor incididunt <br>
-                  <span>
-                    Dipiscing elit
-                  </span>
-                </h5>
-                <img src="imagestes/quote.png" alt="">
-                <p>
-                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                </p>
-              </div>
-            </div>
-          </div></div><div class="owl-item" style="width: 384.4px;"><div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="imagestes/c-1.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Tempor incididunt <br>
-                  <span>
-                    Dipiscing elit
-                  </span>
-                </h5>
-                <img src="imagestes/quote.png" alt="">
-                <p>
-                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                </p>
-              </div>
-            </div>
-          </div></div><div class="owl-item active center" style="width: 384.4px;"><div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="imagestes/c-2.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Tempor incididunt <br>
-                  <span>
-                    Dipiscing elit
-                  </span>
-                </h5>
-                <img src="imagestes/quote.png" alt="">
-                <p>
-                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                </p>
-              </div>
-            </div>
-          </div></div><div class="owl-item" style="width: 384.4px;"><div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="imagestes/c-3.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Tempor incididunt <br>
-                  <span>
-                    Dipiscing elit
-                  </span>
-                </h5>
-                <img src="imagestes/quote.png" alt="">
-                <p>
-                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                </p>
-              </div>
-            </div>
-          </div></div><div class="owl-item cloned" style="width: 384.4px;"><div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="imagestes/c-1.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Tempor incididunt <br>
-                  <span>
-                    Dipiscing elit
-                  </span>
-                </h5>
-                <img src="imagestes/quote.png" alt="">
-                <p>
-                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                </p>
-              </div>
-            </div>
-          </div></div><div class="owl-item cloned" style="width: 384.4px;"><div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="imagestes/c-2.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Tempor incididunt <br>
-                  <span>
-                    Dipiscing elit
-                  </span>
-                </h5>
-                <img src="imagestes/quote.png" alt="">
-                <p>
-                  Dipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                </p>
-              </div>
-            </div>
-          </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"></button><button type="button" role="presentation" class="owl-next"></button></div><div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
-      </div>
+        </div>
     </div>
-  </section>
-
-
+</section>
 
 
 
@@ -1083,7 +966,7 @@
 
       <div class="heading_container">
         <h2>
-          Request A Call Back
+          Give A Review
         </h2>
       </div>
       <div class="">
@@ -1091,8 +974,8 @@
           <div class="row">
             <div class="col-md-9 mx-auto">
               <div class="contact-form">
-                <form action="">
-                  <div>
+            
+                  <!-- <div>
                     <input type="text" placeholder="Full Name ">
                   </div>
                   <div>
@@ -1100,16 +983,19 @@
                   </div>
                   <div>
                     <input type="email" placeholder="Email Address">
-                  </div>
-                  <div>
-                    <input type="text" placeholder="Message" class="input_message">
-                  </div>
-                  <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn_on-hover">
-                      Send
-                    </button>
-                  </div>
-                </form>
+                  </div> -->
+                  <form action="{{ route('review.submit') }}" method="POST">
+    @csrf
+    <div>
+        <input type="text" placeholder="Review" class="input_message" name="review">
+    </div>
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn_on-hover">
+            Send
+        </button>
+    </div>
+</form>
+              
               </div>
             </div>
           </div>
@@ -2810,6 +2696,46 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
 
+
+    .client_section .box {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    margin: 15px;
+}
+
+.client_section .img-box img {
+    width: 100px; /* Default size */
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .client_section .img-box img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .client_section .box {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .client_section .img-box img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .client_section .detail-box h5,
+    .client_section .detail-box p {
+        font-size: 14px;
+    }
+}
+
+
+
 </style>
 
 
@@ -3005,6 +2931,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         carouselWrap.scrollTo({left: slides[0].getBoundingClientRect().width, behavior: 'instant'});
         initializeAutoSlide(); // Initialize auto-sliding
     });
+
+
+
+
 
 
 </script>
