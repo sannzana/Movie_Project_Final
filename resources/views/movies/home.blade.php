@@ -162,11 +162,12 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img src="img3/carousel-1.jpg" class="img-fluid w-100" alt="First slide"/>
+                        <img src="img/cin4.jpg" class="img-fluid w-100" alt="First slide"/>
                         <div class="carousel-caption">
-                            <p class="text-uppercase text-secondary fs-4 mb-0 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1s" style="animation-delay: 1s;">Construction Business</p>
-                            <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.3s" style="animation-delay: 1.3s;">We build somethings new and consistent.</h1>
-                            <p class="mb-5 fs-5 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.5s;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                            <p class="text-uppercase text-secondary fs-4 mb-0 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1s" style="animation-delay: 1s;">Welcome</p>
+                            <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.3s" style="animation-delay: 1.3s;">To The World of Magic</h1>
+                            <p class="mb-5 fs-5 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.5s;">Experience the ultimate cinematic delight in our fully-equipped cinema hall,
+                             ensuring a healthy, hygienic, and cheerful environment with thrilling 3D movie screenings.
                             </p>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-primary d-flex py-3 px-5 me-2 flex-shrink-0 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.7s;" href="#">Apply Now</a>
@@ -175,11 +176,11 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="img3/carousel-2.jpg" class="img-fluid w-100" alt="Second slide"/>
+                        <img src="img/cin2.jpg" class="img-fluid w-100" alt="Second slide"/>
                         <div class="carousel-caption">
-                            <p class="text-uppercase text-secondary fs-4 mb-0 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1s" style="animation-delay: 1s;">Construction Business</p>
-                            <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.3s" style="animation-delay: 1.3s;">We build somethings new and consistent.</h1>
-                            <p class="mb-5 fs-5 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.5s;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                            <p class="text-uppercase text-secondary fs-4 mb-0 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1s" style="animation-delay: 1s;">Had a tressfull week?</p>
+                            <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.3s" style="animation-delay: 1.3s;">Embark on a journey to explore the enchanting beauty of cinema.</h1>
+                            <p class="mb-5 fs-5 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.5s;">Welcome to a happy world where we ensure ample parking space and a prime location for your convenience and enjoyment. 
                             </p>
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-primary d-flex py-3 px-5 me-2 flex-shrink-0 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.7s;" href="#">Apply Now</a>
@@ -188,12 +189,11 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="img3/carousel-3.jpg" class="img-fluid w-100" alt="Third slide"/>
+                        <img src="img/cin5.jpg" class="img-fluid w-100" alt="Third slide"/>
                         <div class="carousel-caption">
-                            <p class="text-uppercase text-secondary fs-4 mb-0 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1s" style="animation-delay: 1s;">Construction Business</p>
-                            <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.3s" style="animation-delay: 1.3s;">We build somethings new and consistent.</h1>
-                            <p class="mb-5 fs-5 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.5s;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            </p>
+                            <p class="text-uppercase text-secondary fs-4 mb-0 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1s" style="animation-delay: 1s;">Tasty!!</p>
+                            <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.3s" style="animation-delay: 1.3s;">There's nothing like the magical combination of a captivating movie and delicious popcorn!!!</h1>
+                            <p class="mb-5 fs-5 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.5s;">Discover our food section, where we prioritize your health while indulging your love for delicious cuisine.
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-primary d-flex py-3 px-5 me-2 flex-shrink-0 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.7s;" href="#">Apply Now</a>
                                 <a class="btn btn-secondary d-inline-block py-3 px-5 ms-2 flex-shrink-0 fadeInUp animate__animated" data-animation="fadeInUp" data-delay="1.5s" style="animation-delay: 1.7s;" href="#">Read More</a>
@@ -226,53 +226,14 @@
         
        
 
-<!-- ongoing movies -->
 
-
-        <!-- <div class="container-fluid service bg-light pb-5">
-            <div class="container pb-5">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                    <p class="text-uppercase text-secondary fs-5 mb-0">On Going Movies</p>
-                    <h2 class="display-4 text-capitalize mb-3">Welcome To The World Of Movies!!!</h2>
-                </div>
-               
-                <div class="row g-4"> 
-                @foreach ($movies as $movie)
-                    
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="service-item">
-                            <div class="service-img custom-poster">
-                            <img src="{{ Storage::url($movie->poster_url) }}"   class="img-fluid w-100" alt="Image">
-                            </div>
-                            <div class="service-content text-center p-4">
-                                <div class="bg-secondary btn-xl-square mx-auto" style="width: 100px; height: 100px;">
-                                    <i class="fas fa-cogs text-primary fa-4x"></i>
-                                </div>
-                                <a href="#" class="d-block fs-4 my-4">{{ $movie->title }}</a>
-                                <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, minima!</p>
-                                <a class="btn btn-secondary py-2 px-4" href="#">Read More</a>
-                            </div>
-                            <div class="service-tytle">
-                                <div class="d-flex align-items-center justify-content-start ps-4 w-100">
-                                    <h4>{{ $movie->title }}</h4>
-                                </div>
-                                <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                                    <i class="fas fa-cogs text-primary fa-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-               @endforeach
-                </div>
-            </div>
-        </div> -->
 
 
         <div class="container-fluid service bg-light pb-5">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
             <p class="text-uppercase text-secondary fs-5 mb-0">On Going Movies</p>
-            <h2 class="display-4 text-capitalize mb-3">Welcome To The World Of Movies!!!</h2>
+            <h4 class="display-4 text-capitalize mb-3">Welcome To The World Of Movies!!!</h4>
         </div>
         
         <div class="row g-4"> 
@@ -439,7 +400,7 @@
 
 
 
-
+<!-- 
         <div class="container-fluid feature bg-light py-5">
             <div class="container py-5">
                 <div class="row g-5 align-items-center">
@@ -496,7 +457,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 
@@ -505,7 +466,7 @@
 
 
         <!-- Features Start -->
-        <div class="container-fluid feature bg-light py-5">
+        <!-- <div class="container-fluid feature bg-light py-5">
             <div class="container py-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
                     <p class="text-uppercase text-secondary fs-5 mb-0">WHy US</p>
@@ -541,7 +502,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Features End -->
 
 
@@ -550,7 +511,7 @@
         <!-- Services End -->
 
         <!-- Fact Counter -->
-        <div class="container-fluid counter py-5">
+        <!-- <div class="container-fluid counter py-5">
             <div class="container py-5">
                 <div class="row g-4">
                     <div class="col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
@@ -618,11 +579,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Fact Counter -->
 
         <!-- Projects Start -->
-        <div class="container-fluid project py-5">
+        <!-- <div class="container-fluid project py-5">
             <div class="container py-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
                     <p class="text-uppercase text-secondary fs-5 mb-0">Our Projects</p>
@@ -710,11 +671,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Projects End -->
 
         <!-- Team Start -->
-        <div class="container-fluid team pb-5">
+        <!-- <div class="container-fluid team pb-5">
             <div class="container pb-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
                     <p class="text-uppercase text-secondary fs-5 mb-0">Upcoming</p>
@@ -807,7 +768,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Team End -->
 
         <!-- Blog Start -->

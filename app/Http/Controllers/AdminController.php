@@ -10,6 +10,9 @@ use App\Models\Movie;
 use App\Models\Date;
 use App\Models\Seat;
 use App\Models\Showtime;
+use App\Models\Review; 
+use App\Models\Task;
+use Illuminate\Support\Str;
 // use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -18,17 +21,41 @@ use Carbon\Carbon;
 class AdminController extends Controller
 {
     public function dashboard()
-{
-    $today = Carbon::today();
-    $startOfMonth = Carbon::now()->startOfMonth();
+    {
+        $today = Carbon::today();
+        $startOfMonth = Carbon::now()->startOfMonth();
 
-    $todaySales = Booking::whereDate('created_at', $today)
-                        ->sum('total_price');
-    $monthlySales = Booking::whereBetween('created_at', [$startOfMonth, now()])
-                           ->sum('total_price');
-    $totalRevenue = Booking::sum('total_price');
-    return view('admin.dashboard',compact('todaySales', 'monthlySales', 'totalRevenue'));
-}
+        $todaySales = Booking::whereDate('created_at', $today)
+                            ->sum('total_price');
+        $monthlySales = Booking::whereBetween('created_at', [$startOfMonth, now()])
+                               ->sum('total_price');
+        $totalRevenue = Booking::sum('total_price');
+
+        $todayBookings = Booking::with(['movie', 'user', 'dateShowtime.date', 'dateShowtime.showtime', 'seats'])
+            ->whereDate('created_at', $today)
+            ->get()
+            ->map(function ($booking) {
+                return [
+                    'id' => $booking->id,
+                    'movie_title' => $booking->movie->title ?? 'N/A',
+                    'date' => $booking->dateShowtime->date->date ?? 'N/A',
+                    'start_time' => $booking->dateShowtime->showtime->start_time ?? 'N/A',
+                    'end_time' => $booking->dateShowtime->showtime->end_time ?? 'N/A',
+                    'seat_numbers' => $booking->seats->pluck('seat_number')->toArray(),
+                    'total_price' => $booking->total_price,
+                    'user_id' => $booking->user->id ?? 'User Deleted',
+                    'user_name' => $booking->user->name ?? 'User Deleted',
+                ];
+            });
+
+        // Fetch recent reviews without mapping to an array
+        $recentReviews = Review::with('user')
+            ->where('post', 'N')
+            ->where('created_at', '>=', Carbon::now()->subDay())
+            ->get();
+            $tasks = Task::all();
+        return view('admin.dashboard', compact('todaySales', 'monthlySales', 'totalRevenue', 'todayBookings', 'recentReviews','tasks'));
+    }
 
 public function movieInfo()
 {

@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
+
+
 return new class extends Migration
 {
     /**
@@ -11,19 +14,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('dates', function (Blueprint $table) {
-            $table->foreignId('movie_id')->after('date')->constrained('movies')->onDelete('cascade');
+        Schema::create('tasks', function (Blueprint $table) {
+            $table->id();
+            $table->string('description');
+            $table->boolean('is_completed')->default(false);
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
     public function down()
-{
-    Schema::table('dates', function (Blueprint $table) {
-        $table->dropForeign(['movie_id']);
-        $table->dropColumn('movie_id');
-    });
-}
+    {
+        Schema::dropIfExists('tasks');
+    }
 };

@@ -35,13 +35,9 @@
                 @foreach ($reviews as $review)
                     <div class="item">
                         <div class="box">
-                        .round-image {
-    border-radius: 50%;  /* Makes the edge of the image round */
-    width: 100px;        /* Example size, adjust as needed */
-    height: 100px;       /* Example size, adjust as needed */
-    object-fit: cover;   /* Ensures the image covers the space without distorting */
-}
-
+                        <div class="img-box">
+    <img src="{{ asset('storage/' . $review->user->image) }}" alt="{{ $review->user->name }}" style="border-radius: 50%; width: 100px; height: 500px; object-fit: cover;">
+</div>
 
                             <div class="detail-box">
                                 <h5>
@@ -61,5 +57,56 @@
 
 
 
+    <div class="row g-4 mt-4">
+        <div class="col-sm-12 col-md-6 col-xl-4">
+            <div class="h-100 bg-secondary rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h6 class="mb-0">Recent Reviews</h6>
+                    <a href="#">Show All</a>
+                </div>
+                @foreach ($recentReviews as $review)
+                    <div class="d-flex align-items-center border-bottom py-3">
+                        <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="w-100 ms-3">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-0">{{ $review['user_name'] }}</h6>
+                                <small>{{ $review['time_ago'] }}</small>
+                            </div>
+                            <span>{{ $review['review'] }}</span>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
 
 
+     <div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-secondary rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <h6 class="mb-0">Recent Reviews</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            @foreach ($recentReviews as $review)
+                    <div class="d-flex align-items-center border-bottom py-3">
+                        <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="w-100 ms-3">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-0">{{ $review['user_name'] }}</h6>
+                                <small>{{ $review['time_ago'] }}</small>
+                            </div>
+                            <span>{{ $review['review'] }}</span>
+                        </div>
+                    </div>
+                @endforeach
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                           
+                        </div>
+                    </div>

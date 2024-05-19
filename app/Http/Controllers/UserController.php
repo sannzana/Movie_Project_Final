@@ -47,7 +47,7 @@ class UserController extends Controller
         $formFields['password'] = bcrypt($formFields['password']);
         
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images', 'public');
+            $imagePath = $request->file('image')->store('public/images');
             $formFields['image'] = $imagePath;
         } else {
             $formFields['image'] = null; // Explicitly set image to null if no image is uploaded

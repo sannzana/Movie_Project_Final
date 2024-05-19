@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\TaskController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,6 +81,13 @@ Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->nam
 
 Route::get('/admin/reviews', [ReviewController::class, 'showReviews'])->name('admin.reviews');
 Route::patch('/review/{review}/toggle', [ReviewController::class, 'togglePost'])->name('review.toggle');
+
+ // Task routes
+ Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
+ Route::patch('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
+ Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+
+
 
 });
 

@@ -20,7 +20,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
       <link href=" https://assets-global.website-files.com/611ec50fa0a8e74bad5a61ff/css/onemoreproductions.webflow.50668d100.min.css" rel="stylesheet">
-      <link href=" https://assets-global.website-files.com/611ec50fa0a8e74bad5a61ff/css/onemoreproductions.webflow.50668d100.min.css" rel="stylesheet">
+     
       <link rel="stylesheet" href="css/bootstrap.min.css" />
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
@@ -43,15 +43,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet"> -->
-    
-    <!-- Icon Font Stylesheet -->
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"> -->
-
-    <!-- Libraries Stylesheet -->
-    <!-- <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> -->
+   
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css2/bootstrap.min.css" rel="stylesheet">
@@ -59,12 +51,10 @@
     <!-- Template Stylesheet -->
     <link href="css2/style.css" rel="stylesheet">
 
-    <!-- Bootstrap 5 CSS -->
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
-
-
+<link rel="stylesheet" href="path/to/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="path/to/main.css">
 
 
 <link href="csstes/style.css" rel="stylesheet" />
@@ -74,8 +64,8 @@
 
 
  <!-- Google Web Fonts -->
- <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+       
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
 
         <!-- Icon Font Stylesheet -->
@@ -94,7 +84,9 @@
 
         <!-- Template Stylesheet -->
         <link href="css3/style.css" rel="stylesheet">
-
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@material-ui/core@0.0.0/dist/material-ui.min.js"></script>
+    <script src="path/to/script.js"></script>
 
 
    
@@ -118,7 +110,7 @@
 
     @yield('body')
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
@@ -163,7 +155,7 @@
 
 </body>
   <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
