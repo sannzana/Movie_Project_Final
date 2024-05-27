@@ -7,6 +7,8 @@ namespace App\Enums;
  */
 enum BookingStatus: string
 {
+    case BOOKED='booked';
     case PAID = 'paid';
     case CANCELLED = 'cancelled';
+    case PENDING = 'pending';
 }

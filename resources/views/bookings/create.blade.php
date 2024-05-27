@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,17 +11,19 @@
 <!-- Confirmation Modal -->
 <div id="confirmationModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close" onclick="closeModal()">&times;</span>
         <h2>Confirm Your Booking</h2>
         <p id="modalMovieTitle"></p>
         <p id="modalDate"></p>
         <p id="modalShowtime"></p>
         <p id="modalSeats"></p>
-        <!-- <p id="modalSeats">Selected Seats: </p> -->
+        <p id="modalTicketPrice"></p> <!-- New paragraph for single ticket price -->
+        <p id="modalTotalPrice"></p> <!-- New paragraph for total price -->
         <button onclick="submitForm()">Confirm Booking</button>
         <button onclick="closeModal()">Cancel</button>
     </div>
 </div>
+
 
     <form id="bookingForm" action="{{ route('bookings.store', [$movie, $date, $showtime]) }}" method="POST">
         @csrf
@@ -157,52 +155,59 @@
 
 <!-- <button type="button" onclick="reviewBooking()">Review Booking</button> -->
 
-<button type="button" id="reviewBookingBtn" onclick="reviewBooking()" disabled class="book_tic">
+    <input type="hidden" id="ticket_price" name="ticket_price" value="{{ $movie->ticket_price }}">
+    <input type="hidden" id="total_price" name="total_price">
+    <input type="hidden" name="movie_title" id="movie_title" value="{{ $movie->title }}">
+    <input type="hidden" name="show_date" id="show_date" value="{{ $date->id }}">
+    <input type="hidden" name="show_time" id="show_time" value="{{ $showtime->id }}">
+    <input type="hidden" name="seat_numbers" id="seat_numbers">
+    <input type="hidden" id="movie_id" name="movie_id" value="{{ $movie->id }}">
+    <input type="hidden" id="date_id" name="date_id" value="{{ $date->id }}">
+    <input type="hidden" id="showtime_id" name="showtime_id" value="{{ $showtime->id }}">
 
-    <i class="bi bi-check2-circle"></i></button>
-   <h6 style="color: #fff;">Click To Review Booking</h6> 
+    <!-- Other form fields -->
 
-</button>
-</div>
-
-
-
-
-
-
- </div>  
-    
-
-
-
- 
-
+    <div class="buttons-container">
+        <div class="button-group left-button">
+            <h6 class="button-label">Click To Book</h6>
+            <button type="button" id="reviewBookingBtn" onclick="reviewBooking()" disabled class="book_tic">
+                <i class="bi bi-check2-circle"></i>
+            </button>
+        </div>
+        <div class="button-group right-button">
+            <h6 class="button-label">Click To Pay</h6>
+            <button type="button" id="payBookingBtn" onclick="payBooking()" class="book_tic pay_tic">
+                <i class="bi bi-cash"></i>
+            </button>
+        </div>
+    </div>
 </form>
-<script src="app22.js"></script>
+
+
 
 <script>
 function toggleReviewButton() {
-    // Get all seat checkboxes
     const seats = document.querySelectorAll('.seat-checkbox');
-    // Check if at least one checkbox is checked
     const isAnySeatSelected = Array.from(seats).some(checkbox => checkbox.checked);
-
-    // Enable or disable the review booking button based on seat selection
-    const reviewButton = document.getElementById('reviewBookingBtn');
-    reviewButton.disabled = !isAnySeatSelected;
+    document.getElementById('reviewBookingBtn').disabled = !isAnySeatSelected;
+    document.getElementById('payBookingBtn').disabled = !isAnySeatSelected;
 }
 
 function reviewBooking() {
-    // Assuming modal and other elements are set up as previously described
     document.getElementById('modalMovieTitle').innerText = document.getElementById('movie').value;
     document.getElementById('modalDate').innerText = document.getElementById('date').value;
     document.getElementById('modalShowtime').innerText = document.getElementById('showtime').value;
-
+    
     const selectedSeats = Array.from(document.querySelectorAll('.seat-checkbox:checked'))
-        .map(input => input.closest('li').previousElementSibling.textContent.trim());  // Fetch the seat number from the span before the li element
-
+        .map(input => input.closest('li').previousElementSibling.textContent.trim());
+    
     document.getElementById('modalSeats').innerText = 'Selected Seats: ' + selectedSeats.join(', ');
 
+    const ticketPrice = parseFloat(document.getElementById('ticket_price').value);
+    const totalPrice = selectedSeats.length * ticketPrice;
+
+    document.getElementById('modalTicketPrice').innerText = 'Ticket Price: ' + ticketPrice.toFixed(2) + ' TK';
+    document.getElementById('modalTotalPrice').innerText = 'Total Price: ' + totalPrice.toFixed(2) + ' TK';
 
     document.getElementById('confirmationModal').style.display = 'block';
 }
@@ -221,7 +226,51 @@ window.onclick = function(event) {
     }
 }
 
+
+
+
+
+function payBooking() {
+    const form = document.getElementById('bookingForm');
+    const movieId = document.getElementById('movie_id').value;
+    const dateId = document.getElementById('date_id').value;
+    const showtimeId = document.getElementById('showtime_id').value;
+
+    const url = '{{ route("bookings.prepare", [":movie", ":date", ":showtime"]) }}'
+        .replace(':movie', movieId)
+        .replace(':date', dateId)
+        .replace(':showtime', showtimeId);
+
+    form.action = url;
+    form.method = "POST";
+    form.submit();
+}
+
+
+
+
+
+
+
+
+
+
+
+function createHiddenInput(name, value) {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = value;
+    return input;
+}
+
+
+
+
+
 </script>
+
+
 
 
 </body>
@@ -248,6 +297,95 @@ window.onclick = function(event) {
     margin: 0;
     box-sizing: border-box;
 }
+
+
+
+
+/* CSS for the new pay button */
+/* Container for the buttons to align them side by side */
+/* Container for the buttons */
+/* Container for the buttons */
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Container for the buttons */
+/* Container for the buttons */
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Grouping button and label together */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Left button specific styles */
+.left-button {
+    position: absolute;
+    left: 2%; /* Adjust this value to move the button further to the left */
+}
+
+/* Right button specific styles */
+.right-button {
+    position: absolute;
+    right: 10%;
+}
+
+/* CSS for the buttons */
+.book .right .book_tic,
+.book .right .pay_tic {
+    height: 50px;
+    width: 50px;
+    padding: 8px 9.5px; /* Top and bottom: 8px; Left and right: 9.5px */
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .3s linear;
+    margin-top: 20px; /* Add margin to separate button from the label */
+}
+
+.book .right .book_tic {
+    background: #a12424;
+}
+
+.book .right .book_tic:hover {
+    background: transparent;
+    border-color: #a12424;
+    color: #99dd23;
+}
+
+.book .right .pay_tic {
+    background: #28a745; /* Green color for the pay button */
+}
+
+.book .right .pay_tic:hover {
+    background: transparent;
+    border-color: #28a745;
+    color: #99dd23;
+}
+
+/* Align the labels above the respective buttons */
+.button-label {
+    margin-bottom: 5px; /* Add margin to separate label from the button */
+    font-size: 12px;
+    color: #fff;
+    text-align: center; /* Center the text above the button */
+}
+
 
 
 :root{

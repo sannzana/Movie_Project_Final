@@ -23,7 +23,7 @@ return new class extends Migration {
                 ->onDelete('cascade');
             $table->bigInteger('total_price')
                 ->default(0);
-            $table->enum('status', ['paid', 'cancelled']);
+            $table->enum('status', ['booked', 'cancelled','paid','pending']);
             $table->datetimes();
         });
     }

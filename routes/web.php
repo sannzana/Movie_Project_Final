@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\TaskController;
 /*
 |--------------------------------------------------------------------------
@@ -42,10 +43,44 @@ Route::middleware('auth')->group(function () {
     Route::patch('/bookings/{booking}', [BookingController::class, 'update'])->name('bookings.update');
     Route::post('/submit-review', [ReviewController::class, 'store'])->name('review.submit');
     Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+    Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+    // Route::post('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout'])->name('exampleHostedCheckout');
+
+    // Route::get('/bookings/{booking}/pay', [BookingController::class, 'exampleHosted'])->name('exampleHosted');
+    Route::post('/exampleHostedCheckout', [BookingController::class, 'exampleHostedCheckout'])->name('exampleHostedCheckout');
+
+
+    Route::post('/create-and-redirect', [SslCommerzPaymentController::class, 'createAndRedirect'])->name('createAndRedirect');
+  
+
+    Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+    Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+    
+
+
+
+
+
+    Route::post('/movies/{movie}/book/{date}/{showtime}/prepare', [BookingController::class, 'prepare'])->name('bookings.prepare');
+
+
+
+
+
+
+
+
+    Route::post('/book-and-pay', [SslCommerzPaymentController::class, 'bookAndPay'])->name('bookAndPay');
+
+
+    Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+    Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+    Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+    
+    Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+Route::post('/exampleHosted', [BookingController::class, 'exampleHosted'])->name('exampleHosted');
+
 });
-
-
-
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/movies', [AdminController::class, 'movie'])->name('admin.iinfo'); // Add this line
@@ -77,6 +112,7 @@ Route::put('/movies/{id}', [AdminController::class, 'update'])->name('admin.movi
 
 Route::get('/admin/bookings', [BookingController::class, 'index2'])->name('admin.bookings');
 Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
+Route::post('/exampleHostedCheckout', [BookingController::class, 'exampleHostedCheckout'])->name('exampleHostedCheckout');
 
 
 Route::get('/admin/reviews', [ReviewController::class, 'showReviews'])->name('admin.reviews');
@@ -90,6 +126,9 @@ Route::patch('/review/{review}/toggle', [ReviewController::class, 'togglePost'])
 
 
 });
+
+
+
 
 
 

@@ -32,26 +32,16 @@
             <div class="ImageVideoCarousel_carouselCon__jaPvM">
                 <div class="ImageVideoCarousel_overlayBorder__yN6tN">
                     <div class="ImageVideoCarousel_carouselWrap___L6yE">
-                        <div class="ImageVideoCarousel_sfWrap__SFWnc">
-                            <div>
-                                <img src="https://assetscdn1.paytm.com/images/catalog/view_item/2572723/1710834731786.jpg?format=webp&amp;imwidth=500" decoding="sync" loading="eager" class="bgImg" width="500" height="100%" alt="">
-                            </div>
-                        </div>
-                        <div class="ImageVideoCarousel_sfWrap__SFWnc">
-                            <div>
-                                <img decoding="async" class="bgImg" width="500" height="100%" fetchpriority="auto" alt="" src="https://assetscdn1.paytm.com/images/catalog/view_item/2586826/1711174722268.jpg?format=webp&amp;imwidth=500">
-                            </div>
-                        </div>
-                        <div class="ImageVideoCarousel_sfWrap__SFWnc">
-                            <div>
-                                <img decoding="async" class="bgImg" width="500" height="100%" fetchpriority="auto" alt="" src="https://assetscdn1.paytm.com/images/catalog/view_item/2592470/1711698402246.jpg?format=webp&amp;imwidth=500">
-                            </div>
-                        </div>
-                        <div class="ImageVideoCarousel_sfWrap__SFWnc">
-                            <div>
-                                <img decoding="async" class="bgImg" width="500" height="100%" fetchpriority="auto" alt="" src="https://assetscdn1.paytm.com/images/catalog/view_item/2573052/1710850133656.jpg?format=webp&amp;imwidth=500">
-                            </div>
-                        </div>
+                    @foreach ($movies as $movie)
+                <div class="ImageVideoCarousel_sfWrap__SFWnc">
+                <div class="responsive-container">
+                        <a href="{{ route('movies.show', $movie->id) }}">
+                            <img src="{{ Storage::url($movie->poster_url) }}" class="responsive-img" alt="{{ $movie->title }}">
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+                       
                     </div>
                     <div class="ImageVideoCarousel_dotsWrap__7ld_K">
                         <div class="ImageVideoCarousel_dot__rFKhv">
@@ -104,7 +94,24 @@
 </section>
 
 
+<style>
+.ImageVideoCarousel_sfWrap__SFWnc {
+    width: 500px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
 
+.responsive-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+</style>
     
 
         <!-- Topbar Start -->

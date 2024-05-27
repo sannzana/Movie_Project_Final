@@ -81,7 +81,7 @@ class BookingController extends Controller
         $booking->movie_id = $movie->id;
         $booking->date_showtime_id = $date_showtime->id;
         $booking->total_price = count($request->seats) * $movie->ticket_price;
-        $booking->status = BookingStatus::PAID;
+        $booking->status = 'booked'; 
 
         // check if the user has enough balance to book the tickets
         // if ($user->balance < $booking->total_price) {
@@ -103,6 +103,66 @@ class BookingController extends Controller
             ->with('success', 'Successfully booked tickets!');
     }
 
+
+
+
+
+
+
+    public function prepare(Request $request, Movie $movie, Date $date, Showtime $showtime): View
+    {
+        $request->validate([
+            'seats' => ['required', 'array', 'min:1', 'max:6', 'exists:seats,id'],
+        ]);
+    
+        $user = User::find(auth()->id());
+        $seats = Seat::find($request->seats);
+    
+        $date_showtime = DateShowtime::where('date_id', $date->id)
+            ->where('showtime_id', $showtime->id)
+            ->first();
+    
+        if (!$date_showtime) {
+            return back()->with('error', 'Invalid date or showtime!');
+        }
+    
+        $booking = new Booking();
+        $booking->user_id = $user->id;
+        $booking->movie_id = $movie->id;
+        $booking->date_showtime_id = $date_showtime->id;
+        $booking->total_price = count($request->seats) * $movie->ticket_price;
+        $booking->status = 'pending';
+    
+        $booking->save();
+    
+        foreach ($seats as $seat) {
+            $booking->seats()->attach($seat->id, ['date_showtime_id' => $date_showtime->id]);
+        }
+    
+        $movieTitle = $movie->title;
+        $showDate = $date->date->format('D, j M Y');
+        $showTime = $showtime->start_time . ' - ' . $showtime->end_time;
+        $ticketPrice = $movie->ticket_price;
+        $seatNumbers = $seats->pluck('seat_number')->implode(', ');
+        $totalPrice = $booking->total_price;
+    
+        return view('exampleHosted', compact('movieTitle', 'showDate', 'showTime', 'ticketPrice', 'seatNumbers', 'totalPrice', 'user'));
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
     /**
      * Index returns the booking history page.
      *
@@ -226,6 +286,26 @@ class BookingController extends Controller
     $booking->delete();
 
     return redirect()->route('admin.bookings')->with('success', 'Booking deleted successfully');
+}
+
+
+
+
+
+public function exampleHosted(Request $request)
+{
+    $movieTitle = $request->input('movie_title');
+    $showDate = $request->input('show_date');
+    $showTime = $request->input('show_time');
+    $seatNumbers = $request->input('seat_numbers');
+    $ticketPrice = $request->input('ticket_price');
+    $totalPrice = $request->input('total_price');
+    $movieId = $request->input('movie_id');
+    $dateId = $request->input('date_id');
+    $showtimeId = $request->input('showtime_id');
+    $user = auth()->user();
+
+    return view('exampleHosted', compact('movieTitle', 'showDate', 'showTime', 'seatNumbers', 'ticketPrice', 'totalPrice', 'movieId', 'dateId', 'showtimeId', 'user'));
 }
 
 }
