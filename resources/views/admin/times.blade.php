@@ -3,7 +3,7 @@
 @section('body2')
     <title>Document</title>
     <style>
-        h2 {
+       h2 {
             text-align: center;
             padding: 20px 0;
         }
@@ -127,9 +127,6 @@
         }
 
         .date-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             border: 1px solid #ddd;
             padding: 10px;
             margin-bottom: 10px;
@@ -138,6 +135,7 @@
         }
 
         .date-item h4 {
+            text-align: center;
             margin: 0 0 10px 0;
         }
 
@@ -166,23 +164,59 @@
         .date-item form button {
             width: 100%;
             max-width: 150px;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .date-item ul {
-            padding-left: 20px;
+        .date-item form .btn-primary {
+            background-color: green;
+            color: white;
+            border: none;
         }
 
-        .date-item ul li {
-            list-style-type: disc;
+        .date-item form .btn-primary:hover {
+            background: linear-gradient(to right, #4CAF50, #45a049);
+        }
+
+
+        
+
+        .date-item form .btn-delete {
+            background-color: red;
+            color: white;
+            border: none;
+        }
+
+        .date-item form .btn-delete:hover {
+            background: linear-gradient(to right, #f44336, #c73e2c);
+        }
+
+        .showtime-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .showtime-table th,
+        .showtime-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .showtime-table thead {
+            background-color: #f4f4f4;
+        }
+
+        .showtime-table th {
+            background-color: #f4f4f4;
         }
 
         @media (max-width: 768px) {
             .date-item h4 {
                 font-size: 1.2em;
-            }
-
-            .date-item ul {
-                padding-left: 15px;
             }
         }
 
@@ -190,48 +224,73 @@
             .date-item h4 {
                 font-size: 1em;
             }
+        }
 
-            .date-item ul {
-                padding-left: 10px;
-            }
+        /* Buttons in the main table */
+        .responsive-table .btn-primary {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .responsive-table .btn-primary:hover {
+            background: linear-gradient(to right, #4CAF50, #45a049);
+        }
+
+        .responsive-table .btn-delete {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .responsive-table .btn-delete:hover {
+            background: linear-gradient(to right, #f44336, #c73e2c);
         }
     </style>
 
-    <h2>Responsive Table without Bootstrap</h2>
+    <h2>{{ $movie->title }}</h2>
 
     <div class="table-container">
         <table class="responsive-table">
-            <caption class="table-caption">An example of a responsive table using custom CSS:</caption>
+           
             <thead>
                 <tr>
                     <th>Ongoing Movies</th>
-                    <th>Movie-Title</th>
+                    <th>Cast</th>
                     <th>Release-Date</th>
                     <th>Poster</th>
                     <th>Duration</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th style="color:green">Edit</th>
+                    <th style="color:red">Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td data-label="Ongoing Movies">{{ $movie->id }}</td>
-                    <td data-label="Movie-Title">{{ $movie->title }}</td>
-                    <td data-label="Release-Date">{{ $movie->release_date }}</td>
+                    <td data-label="Cast">{{ $movie->starring }}</td>
+                    <td data-label="Release-Date">{{ $movie->release_date->format('j M Y')  }}</td>
                     <td data-label="Poster">
                         <img src="{{ Storage::url($movie->poster_url) }}" style="width: 100%; height: auto; max-height: 100px;">
                     </td>
                     <td data-label="Duration">{{ $movie->duration }}</td>
                     <td data-label="Edit">
                         <a href="{{ route('admin.movies.edit', $movie->id) }}">
-                            <button type="button">Update</button>
+                            <button type="button" class="btn btn-primary">Update</button>
                         </a>
                     </td>
                     <td data-label="Delete">
                         <form action="{{ route('admin.movies.delete', $movie->id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">Delete</button>
+                            <button type="submit" class="btn btn-delete">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -256,22 +315,27 @@
                 <form action="{{ route('admin.date.delete', $date) }}" method="POST" onsubmit="return confirm('Are you sure?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete Date</button>
+                    <button type="submit" class="btn btn-delete">Delete Date</button>
                 </form>
-                <ul>
-                    @foreach ($date->showtimes as $showtime)
-                        <li>
-                            @if ($loop->first)
-                                Morning Show:
-                            @elseif ($loop->index == 1)
-                                Afternoon Show:
-                            @else
-                                Evening Show:
-                            @endif
-                            {{ convertTo12HourFormat($showtime->start_time) }} - {{ convertTo12HourFormat($showtime->end_time) }}
-                        </li>
-                    @endforeach
-                </ul>
+
+                <table class="showtime-table">
+                    <thead>
+                        <tr>
+                            <th>Time Slot</th>
+                            <th>Starting Time</th>
+                            <th>Ending Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($date->showtimes as $showtime)
+                            <tr>
+                                <td>{{ $loop->index == 0 ? 'Morning Show' : ($loop->index == 1 ? 'Afternoon Show' : 'Evening Show') }}</td>
+                                <td>{{ convertTo12HourFormat($showtime->start_time) }}</td>
+                                <td>{{ convertTo12HourFormat($showtime->end_time) }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         @endforeach
     </div>
@@ -291,5 +355,4 @@
         }
     @endphp
 @endsection
-
 

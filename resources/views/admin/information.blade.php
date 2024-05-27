@@ -1,7 +1,6 @@
 @extends('admin.dashlay')
 
 @section('body2')
-    
 <h2>Responsive Table without Bootstrap</h2>
 
 <div class="table-container">
@@ -17,9 +16,8 @@
         <th>Poster</th>
         <th>Duration</th>
         <th>Description</th>
-        <th>Dates And Times</th>
-        <th>EDIT</th>
-        <th>DELETE</th>
+        <th>Dates</th>
+        <th>Edit/Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -28,23 +26,37 @@
         <td data-label="Ongoing Movies">{{ $movie->id }}</td>
         <td data-label="Movie-Title">{{ $movie->title }}</td>
         <td data-label="Director">{{ $movie->director }}</td>
-        <td data-label="Release-Date">{{ $movie->release_date }}</td>
+        <td data-label="Release-Date">{{ $movie->release_date->format('j M Y')  }}</td>
         <td data-label="Cast">{{ $movie->starring }}</td>
         <td data-label="Poster">
           <img src="{{ Storage::url($movie->poster_url) }}" style="width: 100%; height: auto; max-height: 100px;">
         </td>
         <td data-label="Duration">{{ $movie->duration }}</td>
         <td data-label="Description">{{ $movie->description }}</td>
-        <td data-label="Dates And Times"> <a href="{{ route('admin.movies.datetime', $movie->id) }}">Click To View Date and Time</a></td>
-        <td data-label="EDIT">{{ $movie->starring }}</td>
-        <td data-label="DELETE">{{ $movie->starring }}</td>
+        <td data-label="Dates">
+          <button class="date-button" onclick="toggleDatesPanel(this)">Show Dates</button>
+          <div class="dates-panel">
+            @foreach ($movie->dates as $date)
+              <div class="date-item">{{ $date->date->format('D, j M Y') }}</div>
+            @endforeach
+          </div>
+        </td>
+        <td data-label="Edit/Delete">
+          <a href="{{ route('admin.movies.datetime', $movie->id) }}">Click To Edit/Delete</a>
+        </td>
       </tr>
       @endforeach
     </tbody>
   </table>
 </div>
 
-<p class="p">Demo by George Martsoukos. <a href="http://www.sitepoint.com/responsive-data-tables-comprehensive-list-solutions" target="_blank">See article</a>.</p>
+<script>
+function toggleDatesPanel(button) {
+  const panel = button.nextElementSibling;
+  panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+
 
 <style>
 h2 {
@@ -86,20 +98,41 @@ h2 {
   max-height: 100px;
 }
 
+/* Styles for date button and sliding panel */
+.date-button {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
+.date-button:hover {
+  background-color: #0056b3;
+}
 
+.dates-panel {
+  display: none; /* Initially hidden */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 5px;
+  max-height: 200px; /* Max height with scrolling for long content */
+  overflow-y: auto;
+}
 
+.date-item {
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd; /* Line between dates */
+}
 
-
-
-
-
-
-
-
-
-
-
+.date-item:last-child {
+  border-bottom: none; /* Remove border for last date */
+}
 
 @media (max-width: 768px) {
   /* Set the table to full width to avoid horizontal scrolling */
@@ -166,10 +199,6 @@ h2 {
   }
 }
 
-
-
-
-
 @media (max-width: 540px) {
   /* Set the table to full width to avoid horizontal scrolling */
   .table-container {
@@ -234,114 +263,13 @@ h2 {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* @media (max-width: 1024px) {
-  .responsive-table, .responsive-table th, .responsive-table td {
-    font-size: 16px; 
-  }
-
-  .responsive-table th, .responsive-table td {
-    padding: 10px 6px; 
-  }
-}
-
-
-@media (max-width: 1024px) and (max-height: 600px) {
-  .responsive-table, .responsive-table th, .responsive-table td {
-    font-size: 14px; 
-  }
-
-  .responsive-table th, .responsive-table td {
-    padding: 8px; 
-  }
-
-  .responsive-table {
-  
-  }
-} */
-
-
-
-
-
-/* Existing styles... */
-
 @media (max-width: 480px) {
   /* Set the table to full width to avoid horizontal scrolling */
   .table-container {
     width: 100%;
   }
   
-  /* Make sure the table stretches to full width */
-  .responsive-table {
-    width: 100%;
-    border: 0;
-  }
 
-  /* Hide the thead on small screens */
-  .responsive-table thead tr {
-    display: none;
-  }
-
-  /* Make table rows display block */
-  .responsive-table tr {
-    display: block;
-    margin-bottom: 0.625em;
-  }
-
-  /* Make table cells display block, looking like a row */
-  .responsive-table td {
-    display: block;
-    text-align: right; /* Right-align text to keep it close to the data-label */
-    padding-left: 50%; /* Give space for the data-label to show */
-    position: relative;
-    border: none;
-    border-bottom: 1px solid #ddd; /* Add a border at the bottom of the cells */
-  }
-
-  /* Use the data-label attribute for the pseudo-element content */
-  .responsive-table td:before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0;
-    width: 50%; /* Width of the label */
-    padding-right: 10px; /* Space between label and cell content */
-    white-space: nowrap; /* Ensure the label is on one line */
-    text-align: left;
-    font-weight: bold;
-  }
-  .responsive-table tr {
-    display: block;
-    margin-bottom: 0.625em;
-    border-bottom: 3px solid #ddd; /* Thicker bottom border for each row */
-  }
-  /* Style for the Poster column to ensure the image fits well */
-  .responsive-table td[data-label="Poster"] img {
-    width: auto; /* Adjust to content width */
-    height: auto; /* Adjust to content height */
-    max-height: 100px; /* Maximum height for the image */
-    display: block;
-    margin: 0 auto; /* Center the image in the block */
-  }
-
-  /* Adjust font size for smaller screens */
-  .responsive-table, .responsive-table td:before {
-    font-size: 12px;
-  }
-}
 
 </style>
 

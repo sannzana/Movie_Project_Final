@@ -1,11 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+
+
+@extends('admin.dashlay')
+
+@section('body2')
+
+
+
+
+
+
+
+
+<style>
+    /* CSS for delete button */
+    .btn-delete {
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 5px; /* Adding border-radius */
+        padding: 5px 10px; /* Adjusting padding */
+        cursor: pointer; /* Changing cursor to pointer */
+    }
+
+     .btn-delete:hover {
+        background: linear-gradient(to right, #f44336, #c73e2c);
+    }
+</style>
 <h1>Booking Information</h1>
 
 <div>
@@ -49,7 +69,7 @@
                     <form action="{{ route('bookings.destroy', $booking['id']) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this booking?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn-delete">Delete</button>
                     </form>
                 </td>
             </tr>
@@ -63,5 +83,4 @@
         window.location.href = '/dashboard'; // Directly redirect
     }
 </script>
-</body>
-</html>
+@endsection

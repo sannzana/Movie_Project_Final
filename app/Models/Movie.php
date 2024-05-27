@@ -58,6 +58,43 @@ class Movie extends Model
     /**
      * Scope a query to only include movies that match a certain title.
      */
+    // public function scopeFilter($query, array $filters)
+    // {
+    //     if (isset($filters['search']) && $filters['search']) {
+    //         $query->where('title', 'like', '%' . $filters['search'] . '%')
+    //             ->orWhere('director', 'like', '%' . $filters['search'] . '%');
+    //     }
+
+    //     if (isset($filters['genre']) && $filters['genre']) {
+    //         $query->where('genre', $filters['genre']);
+    //     }
+
+    //     if (isset($filters['age']) && $filters['age']) {
+    //         $query->where('age_rating', '<=', $filters['age']);
+    //     }
+
+    //     if (isset($filters['type']) && $filters['type']) {
+    //         $query->where('type', $filters['type']);
+    //     }
+
+    //     return $query;
+    // }
+
+    // /**
+    //  * Loads dates for the current week.
+    //  */
+    // public function loadDatesForCurrentWeek() {
+    //     $currentDate = now(); // Get the current date and time
+    //     $twoWeeksLater = $currentDate->copy()->addWeeks(2); // Move two weeks ahead
+    
+    //     return $this->load([
+    //         'dates' => function ($query) use ($currentDate, $twoWeeksLater) {
+    //             $query->whereBetween('date', [$currentDate, $twoWeeksLater]);
+    //         },
+    //     ]);
+    // }
+
+
     public function scopeFilter($query, ?string $title, ?string $sort) {
         if ($title) {
             $query->where('title', 'like', '%' . $title . '%');
@@ -69,19 +106,6 @@ class Movie extends Model
         }
     }
 
-    /**
-     * Loads dates for the current week.
-     */
-    public function loadDatesForCurrentWeek() {
-        $currentDate = now(); // Get the current date and time
-        $twoWeeksLater = $currentDate->copy()->addWeeks(2); // Move two weeks ahead
-    
-        return $this->load([
-            'dates' => function ($query) use ($currentDate, $twoWeeksLater) {
-                $query->whereBetween('date', [$currentDate, $twoWeeksLater]);
-            },
-        ]);
-    }
 
     public function dates(): BelongsToMany
     {

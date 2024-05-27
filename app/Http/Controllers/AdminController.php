@@ -57,13 +57,11 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('todaySales', 'monthlySales', 'totalRevenue', 'todayBookings', 'recentReviews','tasks'));
     }
 
-public function movieInfo()
-{
-    $movies = Movie::all(); 
-    return view('admin.information', compact('movies')); 
-
-
-}
+    public function movieInfo()
+    {
+        $movies = Movie::with('dates')->get(); 
+        return view('admin.information', compact('movies'));
+    }
 public function movie()
 {
     

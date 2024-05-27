@@ -255,7 +255,21 @@
                     </div>
                     <div class="service-content text-center p-4">
                         <div class="bg-secondary btn-xl-square mx-auto" style="width: 100px; height: 100px;">
-                            <i class="fas fa-cogs text-primary fa-4x"></i>
+                        @if($movie->genre == 'Romance')
+                        <i class="bi bi-balloon-heart text-primary fa-2x"></i>
+                    @elseif($movie->genre == 'Family')
+                        <i class="bi bi-house-heart text-primary fa-2x"></i>
+                    @elseif($movie->genre == 'Funny')
+                        <i class="bi bi-emoji-laughing text-primary fa-2x"></i>
+                    @elseif($movie->genre == 'Horror')
+                        <i class="bi bi-cloud-haze2 text-primary fa-2x"></i>
+                    @elseif($movie->genre == 'Music')
+                        <i class="bi bi-file-music text-primary fa-2x"></i>
+                    @elseif($movie->genre == 'Action')
+                        <i class="bi bi-hourglass-split text-primary fa-2x"></i>
+                    @else
+                        <i class="bi bi-film text-primary fa-2x"></i>
+                    @endif
                         </div>
                         <a href="#" class="d-block fs-4 my-4">{{ $movie->title }}</a>
                         <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, minima!</p>
@@ -268,7 +282,21 @@
                             <h4>{{ $movie->title }}</h4>
                         </div>
                         <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
-                            <i class="fas fa-cogs text-primary fa-2x"></i>
+                        @if($movie->genre == 'Romance')
+                        <i class="bi bi-balloon-heart text-primary fa-2x"></i>
+                    @elseif($movie->genre == 'Family')
+                        <i class="bi bi-house-heart text-primary fa-2x"></i>
+                    @elseif($movie->genre == 'Funny')
+                        <i class="bi bi-emoji-laughing text-primary fa-2x"></i>
+                    @elseif($movie->genre == 'Horror')
+                        <i class="bi bi-cloud-haze2 text-primary fa-2x"></i>
+                    @elseif($movie->genre == 'Music')
+                        <i class="bi bi-file-music text-primary fa-2x"></i>
+                    @elseif($movie->genre == 'Action')
+                        <i class="bi bi-hourglass-split text-primary fa-2x"></i>
+                    @else
+                        <i class="bi bi-film text-primary fa-2x"></i>
+                    @endif
                         </div>
                     </div>
                 </div>

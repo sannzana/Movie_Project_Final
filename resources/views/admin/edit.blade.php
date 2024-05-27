@@ -20,4 +20,78 @@
     <button type="submit">Update Movie</button>
    </form>
 
+
+<style>
+   /* Basic styling for form elements */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="file"],
+form input[type="number"],
+form textarea,
+form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Button styling */
+form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+
+    form input[type="text"],
+    form input[type="date"],
+    form input[type="file"],
+    form input[type="number"],
+    form textarea,
+    form button {
+        padding: 8px;
+    }
+}
+
+/* Responsive design for tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+    form {
+        padding: 20px;
+    }
+
+    form input[type="text"],
+    form input[type="date"],
+    form input[type="file"],
+    form input[type="number"],
+    form textarea,
+    form button {
+        padding: 10px;
+    }
+}
+
+</style>
+
+
+
 @endsection
