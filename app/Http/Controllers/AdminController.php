@@ -91,7 +91,9 @@ public function store(Request $request)
             'ticket_price' => 'required|numeric',
             'dates' => 'array', // Ensure 'dates' is an array of dates
             'dates.*' => 'date', // Each item in dates array should be a date
+            'dates.*' => 'after_or_equal:release_date', // Ensure each date is after or equal to the release date
         ]);
+        
 
         // Handle the file upload
         if ($request->hasFile('poster_url')) {
@@ -137,15 +139,7 @@ public function store(Request $request)
             }
         }
 
-        // foreach ($request->dates as $dateValue) {
-        //     // Create a new date record
-        //     $date = new Date(['date' => $dateValue]);
-        //     $date->save(); // Save the date to get an ID
-    
-        //     // Attach the date to the movie using the many-to-many relationship
-        //     // This assumes that you have defined the dates() relationship in the Movie model correctly
-        //     $movie->dates()->attach($date->id);
-        // }
+      
 
 
         return redirect()->route('admin.iinfo')->with('success', 'Movie and dates saved successfully!');

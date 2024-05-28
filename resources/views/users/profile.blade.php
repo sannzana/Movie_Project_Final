@@ -21,11 +21,11 @@
                     <p>{{ $user->age }}</p>
                 </div>
             </div>
-            <div class="profile-actions">
-                <!-- <a href="{{ route('users.edit') }}">
+            <!-- <div class="profile-actions">
+                <a href="{{ route('users.edit') }}">
                     <button class="button">Edit Profile</button>
-                </a> -->
-            </div>
+                </a>
+            </div> -->
         </div>
     </section>
 

@@ -1,57 +1,105 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app')
 
 @section('content')
-    <x-auth-card>
-        <h1 class="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-            Edit Profile
-        </h1>
-        <form class="space-y-4 md:space-y-6" action="{{ route('users.update', $user) }}" method="POST">
-            @csrf
-            @method('PATCH')
+@section('content')
+<section class="section">
+    <div>
+        <div>
+            <div class="form">
+                <h1 class="heading">
+                    Edit Profile
+                </h1>
+                <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
 
-            {{-- username --}}
-            <div>
-                <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Username
-                </label>
-                <input type="username" name="username" id="username"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="your username" required="" value="{{ old('username') ?? $user->username }}">
-                @error('username')
-                    <x-error-message :message="$message" />
-                @enderror
+                    {{-- username --}}
+                    <div>
+                        <label for="username" class="label">
+                            Username
+                        </label>
+                        <input type="text" name="username" id="username" class="input"
+                            placeholder="Your username" required value="{{ $user->username }}">
+                        @error('username')
+                        <x-error-message :message="$message" />
+                        @enderror
+                    </div>
+
+                    {{-- name --}}
+                    <div>
+                        <label for="name" class="label">
+                            Name
+                        </label>
+                        <input type="text" name="name" id="name" class="input"
+                            placeholder="Your name" required value="{{ $user->name }}">
+                        @error('name')
+                        <x-error-message :message="$message" />
+                        @enderror
+                    </div>
+
+                    {{-- age --}}
+                    <div>
+                        <label for="age" class="label">
+                            Age
+                        </label>
+                        <input type="number" name="age" id="age" class="input"
+                            placeholder="Your age" required value="{{ $user->age }}">
+                        @error('age')
+                        <x-error-message :message="$message" />
+                        @enderror
+                    </div>
+
+                    {{-- email --}}
+                    <div>
+                        <label for="email" class="label">
+                            Email
+                        </label>
+                        <input type="email" name="email" id="email" class="input"
+                            placeholder="Your email" required value="{{ $user->email }}">
+                        @error('email')
+                        <x-error-message :message="$message" />
+                        @enderror
+                    </div>
+
+                    {{-- phone number (optional) --}}
+                    <div>
+                        <label for="phone_number" class="label">
+                            Phone Number (Optional)
+                        </label>
+                        <input type="text" name="phone_number" id="phone_number" class="input"
+                            placeholder="Your phone number" value="{{ $user->phone_number }}">
+                        @error('phone_number')
+                        <x-error-message :message="$message" />
+                        @enderror
+                    </div>
+
+                    {{-- image upload --}}
+                    <div>
+                        <label for="user_image" class="label">Profile Image (Optional)</label>
+                        <div class="file-input">
+                            <input type="text" id="file-name" class="file-display" placeholder="No file chosen"
+                                readonly>
+                            <input type="file" id="user_image" name="image" style="display: none;"
+                                onchange="document.getElementById('file-name').value = this.files[0].name">
+                            <button type="button" class="file-button"
+                                onclick="document.getElementById('user_image').click();">Choose Image</button>
+                        </div>
+                    </div>
+
+                    {{-- password fields are optional for editing profile --}}
+                    {{-- Password --}}
+                    {{-- Confirm Password --}}
+
+                    <button type="submit" class="button">
+                        Update Profile
+                    </button>
+                </form>
             </div>
+        </div>
+    </div>
+</section>
 
-            {{-- name --}}
-            <div>
-                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Name
-                </label>
-                <input type="name" name="name" id="name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="your name" required="" value="{{ old('name') ?? $user->name }}">
-                @error('name')
-                    <x-error-message :message="$message" />
-                @enderror
-            </div>
-
-            {{-- age --}}
-            <div>
-                <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Age
-                </label>
-                <input type="number" name="age" id="age"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="your age" required="" value="{{ old('age') ?? $user->age }}">
-                @error('age')
-                    <x-error-message :message="$message" />
-                @enderror
-            </div>
-
-            <button type="submit"
-                class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                Update
-            </button>
-        </form>
-    </x-auth-card>
-@endsection
+<style>
+   
+</style>
+@endsection -->
