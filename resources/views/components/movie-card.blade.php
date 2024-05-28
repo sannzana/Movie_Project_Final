@@ -1,4 +1,4 @@
-<div
+<!-- <div
     class="relative max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
     <a href="{{ route('movies.show', $movie->id) }}">
         <img class="rounded-t-lg" src="{{ $movie->poster_url }}" alt="{{ $movie->title }}" />
@@ -18,4 +18,4 @@
     <div class="flex flex-wrap m-3">
         <x-movie-info :movie="$movie" />
     </div>
-</div>
+</div> -->

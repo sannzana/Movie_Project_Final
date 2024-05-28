@@ -376,8 +376,8 @@
                     <div class="item">
                         <div class="box">
                         <div class="img-box">
-    <img src="{{ asset('storage/' . $review->user->image) }}" alt="{{ $review->user->name }}" style="border-radius: 50%; width: 100px; height: 50px; object-fit: cover;">
-</div>
+                <img src="{{ Storage::url($review->user->image) }}" alt="{{ $review->user->name }}" style="border-radius: 50%; width: 100px; height: 50px; object-fit: cover;">
+            </div>
                             <div class="detail-box">
                                 <h5>
                                     {{ $review->user->name }} <br>
@@ -510,7 +510,7 @@
         <div class="col-md-3">
           <div class="info_contact">
             <h5>
-              About Shop
+              About Us
             </h5>
             <div>
               <div class="img-box">
@@ -525,16 +525,16 @@
                 <img src="images/telephone-white.png" width="12px" alt="">
               </div>
               <p>
-                +01 1234567890
-              </p>
+  <a href="https://wa.me/8801234567876" target="_blank">+8801234567876</a>
+</p>
             </div>
             <div>
               <div class="img-box">
                 <img src="images/envelope-white.png" width="18px" alt="">
               </div>
               <p>
-                demo@gmail.com
-              </p>
+  <a href="https://mail.google.com" target="_blank">shine@gmail.com</a>
+</p>
             </div>
           </div>
         </div>
@@ -544,7 +544,7 @@
               Informations
             </h5>
             <p>
-              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            All rights reserved to ShineCine.
             </p>
           </div>
         </div>
@@ -552,18 +552,18 @@
         <div class="col-md-3">
           <div class="info_insta">
             <h5>
-              Instagram
+            Social Medias
             </h5>
             <div class="insta_container">
               <div>
-                <a href="">
+                <a href="https://www.facebook.com/">
                   <div class="insta-box b-1">
-                    <img src="images/insta.png" alt="">
+                  <i class="bi bi-facebook"></i>
                   </div>
                 </a>
-                <a href="">
+                <a href="https://www.instagram.com/">
                   <div class="insta-box b-2">
-                    <img src="images/insta.png" alt="">
+                  <i class="bi bi-instagram"></i>
                   </div>
                 </a>
               </div>
@@ -571,10 +571,11 @@
               <div>
                 <a href="">
                   <div class="insta-box b-3">
-                    <img src="images/insta.png" alt="">
+                  
+<i class="bi bi-youtube"></i>
                   </div>
                 </a>
-                <a href="">
+                <a href="https://www.youtube.com/">
                   <div class="insta-box b-4">
                     <img src="images/insta.png" alt="">
                   </div>
@@ -598,14 +599,14 @@
         <div class="col-md-3">
           <div class="info_form ">
             <h5>
-              Newsletter
+             Thanks For visiting.
             </h5>
-            <form action="">
+            <!-- <form action="">
               <input type="email" placeholder="Enter your email">
               <button>
                 Subscribe
               </button>
-            </form>
+            </form> -->
             <div class="social_box">
               <a href="">
                 <img src="images/fb.png" alt="">
@@ -700,126 +701,6 @@
 
 
    
-
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    let lastScrollPosition = 0;
-    let initialPositions = {};
-
-    window.addEventListener('scroll', function() {
-        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollDirection = currentScrollPosition > lastScrollPosition ? 'down' : 'up';
-        lastScrollPosition = currentScrollPosition;
-
-        // Animating visible images in the upper and lower galleries
-        animateGallery('.max20vh:not(.bottomline) img', scrollDirection, initialPositions, 'upper', 10);
-        animateGallery('.max20vh.bottomline img', scrollDirection, initialPositions, 'lower', -10);
-
-        // Animating hidden images
-        animateHiddenImages('.gallery-item.hidden img', scrollDirection, initialPositions, 'hidden_upper', 10, 'left');
-        animateHiddenImages('.gallery-item.hidden img', scrollDirection, initialPositions, 'hidden_lower', -10, 'right');
-    });
-});
-
-function animateGallery(selector, scrollDirection, positions, prefix, offset) {
-    document.querySelectorAll(selector).forEach((img, index) => {
-        let key = `${prefix}_${index}`;
-        if (!positions[key]) {
-            let match = getComputedStyle(img).transform.match(/matrix\((.+)\)/);
-            positions[key] = match ? parseFloat(match[1].split(', ')[4]) : 0;
-        }
-        let newPosition = positions[key] + (scrollDirection === 'down' ? offset : -offset);
-        img.style.transform = `translate3d(${newPosition}px, 0px, 0px)`;
-    });
-}
-
-function animateHiddenImages(selector, scrollDirection, positions, prefix, offset, side) {
-    document.querySelectorAll(selector).forEach((img, index) => {
-        let key = `${prefix}_${index}`;
-        if (!positions[key]) {
-            positions[key] = side === 'left' ? -100 : 100; // Starting from -100% (left) or 100% (right)
-        }
-        // Depending on the direction, either move towards the center or away from it
-        let newPosition = scrollDirection === 'down' ? positions[key] + offset : positions[key] - offset;
-        // Ensure the position is within bounds (-100 to 100)
-        newPosition = Math.min(100, Math.max(-100, newPosition));
-        positions[key] = newPosition;
-        img.style.transform = `translate3d(${newPosition}%, 0px, 0px)`;
-    });
-}
-
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const carouselWrap = document.querySelector('.ImageVideoCarousel_carouselWrap___L6yE');
-    const slides = document.querySelectorAll('.ImageVideoCarousel_sfWrap__SFWnc');
-    const totalSlides = slides.length;
-    let autoSlideTimer; // Timer for auto-sliding
-
-    // Clone first and last slides
-    const firstSlideClone = slides[0].cloneNode(true);
-    const lastSlideClone = slides[totalSlides - 1].cloneNode(true);
-    carouselWrap.appendChild(firstSlideClone);
-    carouselWrap.insertBefore(lastSlideClone, slides[0]);
-
-    let index = 1; // Start from the first original slide (not a clone)
-
-    // Function to go to a specific slide
-    function goToSlide(slideIndex) {
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        carouselWrap.scrollLeft = slideWidth * slideIndex;
-        index = slideIndex;
-
-        if (index === totalSlides + 1) { // After the last slide's clone
-            index = 1; // Reset to the first original slide
-            carouselWrap.scrollTo({left: slideWidth, behavior: 'instant'});
-        } else if (index === 0) { // Before the first slide's clone
-            index = totalSlides; // Move to the last original slide
-            carouselWrap.scrollTo({left: slideWidth * totalSlides, behavior: 'instant'});
-        }
-
-        updateDots();
-    }
-
-    // Function to update the navigation dots
-    function updateDots() {
-        const dots = document.querySelectorAll('.ImageVideoCarousel_dot__rFKhv');
-        dots.forEach(dot => dot.classList.remove('ImageVideoCarousel_active__nu46Q'));
-        // Adjust the index for the dots since there's an extra (clone) slide at the beginning
-        dots[(index - 1) % totalSlides].classList.add('ImageVideoCarousel_active__nu46Q');
-    }
-
-    // Function to initialize or reset automatic slide change
-    function initializeAutoSlide() {
-        clearInterval(autoSlideTimer); // Clear existing timer
-        autoSlideTimer = setInterval(() => {
-            if (index === totalSlides - 1) {
-                index = 0;
-            } else {
-                index++;
-            }
-            goToSlide(index);
-        }, 3000); // Change slide every 3 seconds
-    }
-
-    // Detect user interaction to reset auto-slide timer
-    function onUserInteraction() {
-        initializeAutoSlide(); // Reset the timer on user interaction
-    }
-
-    // Add event listeners for user interaction
-    carouselWrap.addEventListener('scroll', onUserInteraction);
-
-    // Initialize the position to the first original slide (skipping the first clone)
-    carouselWrap.scrollTo({left: slides[0].getBoundingClientRect().width, behavior: 'instant'});
-    initializeAutoSlide(); // Initialize auto-sliding
-});
-
-
-</script> -->
-
 
 
 

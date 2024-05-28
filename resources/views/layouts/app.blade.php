@@ -8,7 +8,7 @@
 
 <div class="container-fluid nav-bar bg-transparent">
     <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
-        <a href="index.html" class="navbar-brand d-flex align-items-center text-center">
+        <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center text-center">
             <div class="icon p-2 me-2">
                 <img class="img-fluid" src="img/loggo.jpg" alt="Icon" style="width: 30px; height: 30px;">
             </div>
@@ -26,16 +26,15 @@
         <!-- Menu items -->
         <div class="navbar-nav ms-auto" id="navbarNav">
         <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
-            <a href="{{ route('movies.about') }}" class="nav-item nav-link">About</a>
-
-            <div class="nav-item dropdown">
+            
+            <!-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Let's Talk About Movies</a>
                 <div class="dropdown-menu rounded-0 m-0">
                     <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                     <a href="404.html" class="dropdown-item">404 Error</a>
                 </div>
 
-            </div>
+            </div> -->
             <!-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Login/reg</a>
                 <div class="dropdown-menu rounded-0 m-0">
@@ -108,8 +107,7 @@
 
 
 
-                    <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
-                    <!-- <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a> -->
+                 
        
 
                  
@@ -121,7 +119,7 @@
                         @endif
                    @endauth 
                    
-                   <a href="contact.html" class="nav-item nav-link">Contact</a>
+                  
     </nav>
 </div>
 

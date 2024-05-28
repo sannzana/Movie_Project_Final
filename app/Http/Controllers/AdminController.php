@@ -162,52 +162,7 @@ public function store(Request $request)
 
     
 
-public function storenn(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string',
-            'genre' => 'required|string',
-            'description' => 'required|string',
-            'release_date' => 'required|date',
-            'poster_url' => 'required|image',
-            
-        ]);
 
-        // Handle the file upload
-        if ($request->hasFile('poster_url')) {
-            $path = $request->file('poster_url')->store('public/postersnn');
-        }
-       
-        $movie = new Movienn([
-            'title' => $request->title,
-            'genre' => $request->genre,
-            'description' => $request->description,
-            'release_date' => $request->release_date,
-            'poster_url' => $path ?? null,
-           
-        ]);
-
-        $movie->save(); // Save the movie to get an ID
-
-        // Handle the dates
-       
-            // Now attach each showtime to this date using the date_showtime pivot table
-            
-        }
-
-        // foreach ($request->dates as $dateValue) {
-        //     // Create a new date record
-        //     $date = new Date(['date' => $dateValue]);
-        //     $date->save(); // Save the date to get an ID
-    
-        //     // Attach the date to the movie using the many-to-many relationship
-        //     // This assumes that you have defined the dates() relationship in the Movie model correctly
-        //     $movie->dates()->attach($date->id);
-        // }
-
-
-        return redirect()->route('admin.iinfo')->with('success', 'Movie and dates saved successfully!');
-    }
 
 
 public function deleteDate(Date $date)
