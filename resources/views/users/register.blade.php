@@ -119,7 +119,7 @@
 
 <style>
 .section {
-    background-color: navy;
+
     display: flex;
     justify-content: center;
     align-items: center;

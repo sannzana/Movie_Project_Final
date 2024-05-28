@@ -25,8 +25,9 @@
 
         <!-- Menu items -->
         <div class="navbar-nav ms-auto" id="navbarNav">
-            <a href="index.html" class="nav-item nav-link active">Home</a>
-            <a href="about.html" class="nav-item nav-link">About</a>
+        <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
+            <a href="{{ route('movies.about') }}" class="nav-item nav-link">About</a>
+
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Let's Talk About Movies</a>
                 <div class="dropdown-menu rounded-0 m-0">

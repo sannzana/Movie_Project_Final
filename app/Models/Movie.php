@@ -25,6 +25,7 @@ class Movie extends Model
         'description',
         'release_date',
         'poster_url',
+        'video',
         'starring',
         'director',
         'producer',

@@ -27,6 +27,10 @@
         <input type="file" id="poster_url" name="poster_url" accept="image/*" required>
     </div>
     <div class="form-group">
+    <label for="video">YouTube Video Link:</label>
+    <input type="text" id="video" name="video" placeholder="Enter YouTube Video Link" required>
+</div>
+    <div class="form-group">
         <label for="starring">Starring:</label>
         <input type="text" id="starring" name="starring" required>
     </div>
@@ -157,6 +161,32 @@
             font-size: 1rem;
         }
     }
+
+
+    .movie-form input[type="date"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    /* Set background color to grey */
+    background-color: #f2f2f2; /* Adjust as needed */
+}
+
+/* To style the datepicker arrow icon */
+.movie-form input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: grayscale(100%); /* Make the calendar icon grey */
+}
+
+/* For Firefox */
+.movie-form input[type="date"]::-moz-calendar-picker-indicator {
+    filter: grayscale(100%);
+}
+
+/* For Edge */
+.movie-form input[type="date"]::-ms-calendar-picker-indicator {
+    filter: grayscale(100%);
+}
+
 </style>
 
 @endsection

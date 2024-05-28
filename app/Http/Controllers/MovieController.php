@@ -139,4 +139,14 @@ class MovieController extends Controller
         $movie = $a2movie->loadDatesForCurrentWeek();
         return view('movies.show', compact('movie', 'currentDate', 'currentTime'));
     }
+
+
+
+    public function about()
+    {
+        // You can perform any necessary logic here
+        
+        // Return the view for the about page
+        return view('movies.about');
+    }
 }

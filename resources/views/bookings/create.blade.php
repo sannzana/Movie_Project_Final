@@ -78,7 +78,7 @@
      <div class="time">
         <h6><i class="bi bi-clock"></i>{{ $movie->duration}}</h6>
     <!-- database theke duration -->
-    <button>PG-13</button>
+    <button>{{ $movie->age}}+</button>
 </div>
 </div>
 
@@ -88,7 +88,7 @@
 <div class="date_type">
     <div class="left_curd">
     <!-- for date and time -->
-    <h6 class="title" style="color: aliceblue;">Thursday 3 May</h6>
+    <h6 class="title" style="color: aliceblue;"> {{ date('l j F') }}</h6>
     <div class="card_month crd" style="color: aliceblue;">
         <input type="text" name="date" id="date" aria-label="date"
             class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400"
@@ -101,7 +101,7 @@
     <!-- timing er jonno -->
     
     <div class="right_curd">
-        <h6 class="title" style="color: aliceblue;">Thursday 3 May</h6>
+    <h4 class="title" style="color: aliceblue;" id="bangladeshTime"></h4>
     <div class="card_month crd" style="color: aliceblue;">
            
         <input type="text" name="showtime" id="showtime" aria-label="showtime"
@@ -168,15 +168,15 @@
     <!-- Other form fields -->
 
     <div class="buttons-container">
-        <div class="button-group left-button">
+        <!-- <div class="button-group left-button">
             <h6 class="button-label">Click To Book</h6>
             <button type="button" id="reviewBookingBtn" onclick="reviewBooking()" disabled class="book_tic">
                 <i class="bi bi-check2-circle"></i>
             </button>
-        </div>
+        </div> -->
         <div class="button-group right-button">
-            <h6 class="button-label">Click To Pay</h6>
-            <button type="button" id="payBookingBtn" onclick="payBooking()" class="book_tic pay_tic">
+            <h6 class="button-label">Click To Book</h6>
+            <button type="button" id="payBookingBtn" onclick="reviewBooking()" class="book_tic pay_tic">
                 <i class="bi bi-cash"></i>
             </button>
         </div>
@@ -249,6 +249,19 @@ function payBooking() {
 
 
 
+
+    function updateBangladeshTime() {
+        var now = new Date();
+        var options = { hour12: true, hour: 'numeric', minute: '2-digit', second: '2-digit' };
+        var bangladeshTime = now.toLocaleString('en-US', { timeZone: 'Asia/Dhaka', ...options });
+        document.getElementById('bangladeshTime').textContent = bangladeshTime;
+    }
+
+    // Update time every second
+    setInterval(updateBangladeshTime, 1000);
+
+    // Initial update
+    updateBangladeshTime();
 
 
 

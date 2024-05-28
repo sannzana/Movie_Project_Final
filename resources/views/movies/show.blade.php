@@ -25,15 +25,19 @@
 <div class="left">
     <img  src="{{ Storage::url($movie->poster_url) }}">
     <div class="play">
+    <a href="{{ $movie->video }}" target="_blank">
         <i class="bi bi-play-fill"></i>
+        </a>
 </div>
 <div class="cont">
-    <h6>Directed By</h6>
-    <p>dsfdsfd sdsds </p>
-    <h6>Starring</h6>
-    <p>dsfdsfd dsds dsfdsf, dsfd dsfdsf dsf</p>
-    <h6>Starring</h6>
-    <p>dsfdsfd</p>
+<h6>Directed By</h6>
+        <p>{{ $movie->director}} </p>
+        <h6>Starring</h6>
+        <p>{{ $movie->starring }}</p>
+        <h6>Starring</h6>
+        <p>dsfdsfd</p>
+        <h2>DESCRIPTION</h2>
+        <p>{{ $movie->description}}</p>
     <!--      change later -->
 </div>
 
@@ -54,13 +58,15 @@
      <div class="time">
     <h6><i class="bi bi-clock"></i>{{ $movie->duration }}</h6>
     <!-- database theke duration -->
-    <button>PG-13</button>
+    <button>{{ $movie->age }}+</button>
 </div>
 </div>
 <div class="date_type">
 <div class="left_curd">
 <!-- for date and time -->
-<h4 class="title" style="color: aliceblue;">Thursday 3 May</h4>
+<h4 class="title" style="color: aliceblue;">
+    {{ date('l j F') }}
+</h4>
 
 
 
@@ -69,7 +75,9 @@
 <!-- timing er jonno -->
 
 <div class="right_curd">
-    <h4 class="title" style="color: aliceblue;">Thursday 3 May</h4>
+<h4 class="title" style="color: aliceblue;" id="bangladeshTime"></h4>
+
+
 <div class="card_month crd" style="color: aliceblue;">
    
 </div>
@@ -96,7 +104,7 @@
 </div>
 
 
-  <section id="dates-showtimes" class="container">
+<section id="dates-showtimes" class="container">
     <h2>Dates and Showtimes</h2>
     <div class="grid">
         @foreach ($movie->dates as $date)
@@ -110,11 +118,15 @@
                             $isPastDate = $formattedDate < $currentDate;
                             $isPastShowtime = $showtime->start_time < $currentTime;
                             $disabled = $isPastDate || ($isToday && $isPastShowtime);
+
+                            // Convert 24-hour format to 12-hour format with am/pm
+                            $startTimeFormatted = date('g:ia', strtotime($showtime->start_time));
+                            $endTimeFormatted = date('g:ia', strtotime($showtime->end_time));
                         @endphp
                         <li class="{{ $disabled ? 'disabled' : 'available' }}">
                             <a href="{{ route('bookings.create', [$movie, $date, $showtime]) }}">
                                 <button type="button">
-                                    {{ $showtime->start_time }} - {{ $showtime->end_time }}
+                                    {{ $startTimeFormatted }} - {{ $endTimeFormatted }}
                                 </button>
                             </a>
                         </li>
@@ -123,8 +135,7 @@
             </div>
         @endforeach
     </div>
-</section> 
-
+</section>
 
 </div>
 
@@ -132,7 +143,20 @@
 
  </div>  
     
+ <script>
+    function updateBangladeshTime() {
+        var now = new Date();
+        var options = { hour12: true, hour: 'numeric', minute: '2-digit', second: '2-digit' };
+        var bangladeshTime = now.toLocaleString('en-US', { timeZone: 'Asia/Dhaka', ...options });
+        document.getElementById('bangladeshTime').textContent = bangladeshTime;
+    }
 
+    // Update time every second
+    setInterval(updateBangladeshTime, 1000);
+
+    // Initial update
+    updateBangladeshTime();
+</script>
 <script src="app22.js"></script>
 
 
@@ -189,7 +213,8 @@ height:100%;
 
 .book .left{
     width: 20%;
-    background: #2e3037;
+    /* background: #2e3037; */
+    background: linear-gradient(170deg , #2e3037,#1f2025);
 }
 
 .book .left img
@@ -248,7 +273,7 @@ margin-bottom: 20px;
    width:95%;
    height:250px;
    /* border: solid #fff; */
-   background: url(image/left4.jpg) no-repeat center -30px/cover;
+   background: url("{{ Storage::url($movie->poster_url) }}") no-repeat center -30px/cover;
    z-index:-10;
    border-radius: 20px;
 } 
