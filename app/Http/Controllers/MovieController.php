@@ -85,9 +85,19 @@ class MovieController extends Controller
     public function index(Request $request): View
     {
         // Handle movie listing with pagination
-        $title = request()->input('search');
-        $sort = request()->input('sort');
-        $movies = Movie::filter($title, $sort)->latest()->paginate(8);
+        $title = $request->input('search');
+    $genre = $request->input('genre');
+    $age = $request->input('age');
+    $type = $request->input('type');
+    $director = $request->input('director');
+    $sort = $request->input('sort');
+    
+    // Filtered and paginated movies
+    $movies = Movie::filter($title, $genre, $age, $type, $director, $sort)
+                           ->latest()->paginate(8);
+
+
+                           $allMovies = Movie::all();                   
         $reviews = Review::with('user')->where('post', 'Y')->get();
         // Prepare gallery images
         $upperGalleryImages = [
@@ -105,7 +115,7 @@ class MovieController extends Controller
         ];
 
         // Return the view with both sets of data
-        return view('movies.home', compact('movies', 'upperGalleryImages', 'lowerGalleryImages','reviews'));
+        return view('movies.home', compact('movies', 'allMovies','upperGalleryImages', 'lowerGalleryImages','reviews'));
     }
 
     /**
@@ -119,6 +129,14 @@ class MovieController extends Controller
         $currentDate = today('Asia/Jakarta')->format('Y-m-d');
         $currentTime = now('Asia/Jakarta')->format('H:i:s');
         $movie = $movie->loadDatesForCurrentWeek();
+        return view('movies.show', compact('movie', 'currentDate', 'currentTime'));
+    }
+
+    public function show2(Movie $movie): View
+    {
+        $currentDate = today('Asia/Jakarta')->format('Y-m-d');
+        $currentTime = now('Asia/Jakarta')->format('H:i:s');
+        $movie = $a2movie->loadDatesForCurrentWeek();
         return view('movies.show', compact('movie', 'currentDate', 'currentTime'));
     }
 }

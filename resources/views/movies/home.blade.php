@@ -32,11 +32,11 @@
             <div class="ImageVideoCarousel_carouselCon__jaPvM">
                 <div class="ImageVideoCarousel_overlayBorder__yN6tN">
                     <div class="ImageVideoCarousel_carouselWrap___L6yE">
-                    @foreach ($movies as $movie)
+                    @foreach ($allMovies as $a2movie)
                 <div class="ImageVideoCarousel_sfWrap__SFWnc">
                 <div class="responsive-container">
-                        <a href="{{ route('movies.show', $movie->id) }}">
-                            <img src="{{ Storage::url($movie->poster_url) }}" class="responsive-img" alt="{{ $movie->title }}">
+                        <a href="{{ route('movies.show2', $a2movie->id) }}">
+                            <img src="{{ Storage::url($a2movie->poster_url) }}" class="responsive-img" alt="{{ $a2movie->title }}">
                         </a>
                     </div>
                 </div>
@@ -244,6 +244,26 @@
         </div>
         
         <div class="row g-4"> 
+        <form class="d-none d-md-flex ms-4" action="{{ route('home') }}" method="GET">
+    <input class="form-control bg-dark border-0" type="search" placeholder="Search by title" name="search" value="{{ request('search') }}">
+    <select name="genre" class="form-control bg-dark border-0 ms-2">
+        <option value="">All Genres</option>
+        <option value="Romance">Romance</option>
+        <option value="Action">Action</option>
+        <option value="Family">Family</option>
+        <option value="Horror">Horror</option>
+        <option value="Music">Music</option>
+        <!-- Add other genre options -->
+    </select>
+    <input class="form-control bg-dark border-0 ms-2" type="number" placeholder="Age below" name="age" value="{{ request('age') }}">
+    <select name="type" class="form-control bg-dark border-0 ms-2">
+        <option value="">All Types</option>
+        <option value="3D">3D</option>
+        <option value="2D">2D</option>
+    </select>
+    <input class="form-control bg-dark border-0 ms-2" type="search" placeholder="Search by director" name="director" value="{{ request('director') }}">
+    <button class="btn btn-secondary py-2 px-4 ms-2" type="submit">Search</button>
+</form>
         @foreach ($movies as $movie)
             
             <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
@@ -273,7 +293,7 @@
                         </div>
                         <a href="#" class="d-block fs-4 my-4">{{ $movie->title }}</a>
                         <p class="text-white mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, minima!</p>
-                        <a class="btn btn-secondary py-2 px-4" href="#">Learn More</a>
+                       
                         <br> <br>
                         <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-secondary py-2 px-4">Book Now</a>
                     </div>

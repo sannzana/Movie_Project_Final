@@ -22,6 +22,7 @@ use App\Http\Controllers\TaskController;
 Route::get('/', [MovieController::class, 'index'])->name('home');
 // Route::get('/', [MovieController::class, 'home'])->name('home');
 Route::get('/movies/{movie}', [MovieController::class, 'show'])->name('movies.show');
+Route::get('/a2movies/{movie}', [MovieController::class, 'show'])->name('movies.show2');
 
 Route::middleware('guest')->group(function () {
     Route::get('/register', [UserController::class, 'create'])->name('register');

@@ -95,17 +95,37 @@ class Movie extends Model
     // }
 
 
-    public function scopeFilter($query, ?string $title, ?string $sort) {
+    public function scopeFilter($query, ?string $title, ?string $genre, ?string $age, ?string $type, ?string $director, ?string $sort) {
         if ($title) {
             $query->where('title', 'like', '%' . $title . '%');
         }
-
+        if ($genre) {
+            $query->where('genre', $genre);
+        }
+        if ($age) {
+            $query->where('age', '<=', $age);
+        }
+        if ($type) {
+            $query->where('type', $type);
+        }
+        if ($director) {
+            $query->where('director', 'like', '%' . $director . '%');
+        }
         if ($sort) {
             $sort = str_replace(' ', '_', $sort);
             $query->orderBy($sort);
         }
     }
+    public function loadDatesForCurrentWeek() {
+        $currentDate = now(); // Get the current date and time
+        $twoWeeksLater = $currentDate->copy()->addWeeks(2); // Move two weeks ahead
 
+        return $this->load([
+            'dates' => function ($query) use ($currentDate, $twoWeeksLater) {
+                $query->whereBetween('date', [$currentDate, $twoWeeksLater]);
+            },
+        ]);
+    }
 
     public function dates(): BelongsToMany
     {
